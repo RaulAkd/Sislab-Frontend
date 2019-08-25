@@ -1,0 +1,41 @@
+<h1 mat-dialog-title>Ingrese los datos de metodo</h1>
+<div mat-dialog-content>
+        <div [hidden] = "true">
+            <mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="metodo.id_metodo" placeholder="ID">
+            </mat-form-field>
+        </div>
+
+        <div>
+            <button mat-button (click)= "agregarDetalle()" >Agregar Detalle</button>
+        </div>
+        
+
+        <mat-form-field class="example-full-width">
+            <mat-select placeholder="Servicio" [(value)]="selected">
+                <mat-option *ngFor="let s of serv " [value]="s.id_servicio">
+                    {{s.id_servicio}} - {{s.nombre_s}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field> 
+
+        <mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="metodo.descr_mt" placeholder="Descripcion">
+        </mat-form-field>
+    
+        <mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="metodo.certificado_mt" placeholder="Certificado" >
+        </mat-form-field>
+    
+        <mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="metodo.nombre_mt" placeholder="Nombre">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="metodo.aux_idmetodo" placeholder="Auxiliar">
+        </mat-form-field>
+</div> 
+<div mat-dialog-actions>
+    <button mat-button cdkFocusInitial (click)= "operar(metodo)" >Aceptar</button>
+    <button mat-button mat-dialog-close="false">Cancelar</button>
+</div>

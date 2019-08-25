@@ -1,0 +1,39 @@
+<div id = "myContainer">
+    <div class="container">
+        <div class="containerToolbar" >
+            <mat-toolbar id="toolbarPrincipal">
+                    <mat-toolbar-row>
+                        <span>
+                            <img id = "img1" src="../assets/Escudo_de_la_Escuela_Politécnica_Nacional.png" alt="">
+                        </span>            
+                        <span class="fill2"></span>
+                        <span id="spanTitulo">
+                            <h1 id="titulo1">ESCUELA POLITÉCNICA NACIONAL</h1>
+                            <h2 id="titulo2">Sistema Integrado de Información - SII</h2>
+                        </span>
+                        <span class="fill"></span>
+                        <span id="spanLeft" >
+                            <div id="cardSesion">
+                                <P>Bienvenido:</P>
+                                <p>Rol()</p>
+                                <button id="buttonCerrarSesion" mat-button>Cerrar Sesión</button>
+                            </div>
+                        </span>        
+                    </mat-toolbar-row>
+                    
+                </mat-toolbar>
+        </div>
+        <div class="container3">
+            <mat-drawer-container class="example-container">
+                    <mat-drawer id="side" mode="side" opened>
+                        <p>Menú de Opciones</p>
+                        
+                    </mat-drawer>
+                    <mat-drawer-content>
+                        
+                        <router-outlet></router-outlet>  
+                    </mat-drawer-content>
+                  </mat-drawer-container>
+        </div>  
+    </div>    
+</div>

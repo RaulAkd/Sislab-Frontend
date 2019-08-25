@@ -1,0 +1,123 @@
+<div class="container">
+    
+    <button mat-mini-fab color="primary" [routerLink]="['nuevo']" (click)="openDialog()" id="botonNuevo">
+        <mat-icon>add</mat-icon>
+    </button>
+
+    <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+    <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort>          
+            <!-- ID Column -->
+            <ng-container matColumnDef="id_personal">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+                <td mat-cell *matCellDef="let row"> {{row.id_personal}} </td>
+            </ng-container>
+
+            <!-- Tipo personal Column -->
+            <ng-container matColumnDef="tipoPersonal">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Tipo Personal </th>
+                <td mat-cell *matCellDef="let row"> {{row.tipoPersonal.id_tipopersonal}} </td>
+            </ng-container> 
+
+            <!-- Cargo Personal Column -->
+            <ng-container matColumnDef="cargosPersonal">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Cargo Personal </th>
+                <td mat-cell *matCellDef="let row"> {{row.cargosPersonal.id_cargo}} </td>
+            </ng-container>
+
+            <!-- Cedula Column -->
+            <ng-container matColumnDef="cedula_pe">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Cedula </th>
+                <td mat-cell *matCellDef="let row"> {{row.cedula_pe}} </td>
+            </ng-container>
+                      
+            <!-- nombres Column -->
+            <ng-container matColumnDef="nombres_pe">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+                <td mat-cell *matCellDef="let row"> {{row.nombres_pe}} </td>
+            </ng-container>
+            
+            <!-- Direccion Column -->
+            <ng-container matColumnDef="direccion_pe">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Direccion </th>
+                <td mat-cell *matCellDef="let row"> {{row.direccion_pe}} </td>
+            </ng-container>
+
+            <!-- Telefono Column -->
+            <ng-container matColumnDef="telefono_pe">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Telefono </th>
+                <td mat-cell *matCellDef="let row"> {{row.telefono_pe}} </td>
+            </ng-container>
+
+            <!-- email Column -->
+            <ng-container matColumnDef="email_pe">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+                <td mat-cell *matCellDef="let row"> {{row.email_pe}} </td>
+            </ng-container>
+
+            <!-- Cargo Column -->
+            <ng-container matColumnDef="cargo_pe">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Cargo </th>
+                <td mat-cell *matCellDef="let row"> {{row.cargo_pe}} </td>
+            </ng-container>
+
+            <!-- Tipo Column -->
+            <ng-container matColumnDef="tipo_pe">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Tipo personal </th>
+                <td mat-cell *matCellDef="let row"> {{row.tipo_pe}} </td>
+            </ng-container>
+
+            <!-- sueldo Column -->
+            <ng-container matColumnDef="sueldo_pe">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Sueldo </th>
+                <td mat-cell *matCellDef="let row"> {{row.sueldo_pe}} </td>
+            </ng-container>
+
+            <!-- Fecha Ingreso Column -->
+            <ng-container matColumnDef="fechaing_pe">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha Ingreso </th>
+                <td mat-cell *matCellDef="let row"> {{row.fechaing_pe}} </td>
+            </ng-container>
+
+            <!-- Fecha fin Column -->
+            <ng-container matColumnDef="fechafin_pe">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha Salida </th>
+                <td mat-cell *matCellDef="let row"> {{row.fechafin_pe}} </td>
+            </ng-container>
+
+            <!-- Auxiliar Column -->
+            <ng-container matColumnDef="aux_idpersonal">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Id Auxiliar </th>
+                <td mat-cell *matCellDef="let row"> {{row.aux_idpersonal}} </td>
+            </ng-container>
+
+            <!-- Unidad Column -->
+            <ng-container matColumnDef="id_unidad">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Unidad </th>
+                <td mat-cell *matCellDef="let row"> {{row.id_unidad}} </td>
+            </ng-container>
+            
+            <!-- Acciones Column -->
+            <ng-container matColumnDef="acciones">
+                <th mat-header-cell *matHeaderCellDef> Acciones </th>
+                <!-- <td mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.color}} </td> -->
+                <td mat-cell *matCellDef="let row">
+                    <button mat-icon-button color="primary" [routerLink]="['edicion', row.id_personal]" (click)="openDialog(row)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button mat-icon-button color="accent" (click)="eliminarPersonal(row.id_personal)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+                      
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row  *matRowDef="let row; columns: displayedColumnsData;">
+            </tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    </div>        
+</div>
+

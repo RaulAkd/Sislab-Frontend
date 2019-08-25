@@ -1,0 +1,56 @@
+<h1 mat-dialog-title>Ingrese los datos de laboratorio</h1>
+<div mat-dialog-content>
+        <div [hidden] = "true">
+            <mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="laboratorio.id_laboratorio" placeholder="ID">
+            </mat-form-field>
+        </div>
+
+        <mat-form-field class="example-full-width">
+            <mat-select placeholder="Unidad" [(value)]="selected">
+                <mat-option *ngFor="let u of uni " [value]="u.id_unidad">
+                    {{u.id_unidad}} - {{u.nombre_u}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field> 
+
+        <mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="laboratorio.nombre_l" placeholder="Nombre">
+        </mat-form-field>
+    
+        <mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="laboratorio.leyendaprof_l" placeholder="Leyenda Prof" >
+        </mat-form-field>
+    
+        <mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="laboratorio.centrocosto_l" placeholder="Costo">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="laboratorio.responsable_l" placeholder="Responsable">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="laboratorio.email_l" placeholder="Email">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="laboratorio.direccion_l" placeholder="Direccion">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="laboratorio.telefono_l" placeholder="Telefono">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="laboratorio.fax_l" placeholder="Fax">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="laboratorio.leyenda_ot_l" placeholder="Leyenda">
+        </mat-form-field>
+</div> 
+<div mat-dialog-actions>
+    <button mat-button cdkFocusInitial (click)= "operar(laboratorio)" >Aceptar</button>
+    <button mat-button mat-dialog-close="false">Cancelar</button>
+</div>

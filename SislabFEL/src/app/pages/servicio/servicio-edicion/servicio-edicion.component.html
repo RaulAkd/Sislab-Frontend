@@ -1,0 +1,44 @@
+<h1 mat-dialog-title>Ingrese los datos de servicio</h1>
+<div mat-dialog-content>
+        <div [hidden] = "true">
+            <mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="servicio.id_servicio" placeholder="ID">
+            </mat-form-field>
+        </div>
+
+        <mat-form-field class="example-full-width">
+            <mat-select placeholder="Tipo Servicio" [(value)]="selected">
+                <mat-option *ngFor="let t of ts " [value]="t.id_tiposerv">
+                    {{t.id_tiposerv}} - {{t.nombre_ts}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field> 
+
+        <mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="servicio.id_laboratorio" placeholder="Id Laboratorio">
+        </mat-form-field>
+    
+        <mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="servicio.nombre_s" placeholder="Nombre Servicio" >
+        </mat-form-field>
+    
+        <mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="servicio.descr_s" placeholder="Descripcion">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="servicio.aux_id_servicio" placeholder="Auxiliar">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="servicio.precio_s" placeholder="Precio">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="servicio.acreditado" placeholder="Acreditado">
+        </mat-form-field>
+</div> 
+<div mat-dialog-actions>
+    <button mat-button cdkFocusInitial (click)= "operar(servicio)" >Aceptar</button>
+    <button mat-button mat-dialog-close="false">Cancelar</button>
+</div>

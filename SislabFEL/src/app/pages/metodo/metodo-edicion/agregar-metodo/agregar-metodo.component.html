@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>Ingresar detalle metodo</h1>
+<div mat-dialog-content>
+        <div>
+            <mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="metodo.descr_mt" placeholder="Producto">
+            </mat-form-field>
+
+            <button mat-mini-fab color="primary">
+                <mat-icon>add</mat-icon>
+            </button>        
+        </div>
+
+        <mat-form-field class="example-full-width">
+            <p>Unidad Medida: </p>
+            <input matInput [(ngModel)]="metodo.unidad" disabled = "true" placeholder="lts, gr, cc">
+        </mat-form-field>
+</div> 
+<div mat-dialog-actions>
+    <button mat-button cdkFocusInitial (click)= "operar(metodo)" >Aceptar</button>
+    <button mat-button mat-dialog-close="false">Cancelar</button>
+</div>
