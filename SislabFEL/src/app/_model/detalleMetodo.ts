@@ -6,7 +6,7 @@ export class DetalleMetodo {
     // tslint:disable-next-line:variable-name
     id_detallemetodo: string;
     // tslint:disable-next-line:variable-name
-    existencia: Existencias;
+    id_existencia: string;
     // tslint:disable-next-line:variable-name
     metodo: Metodo;
     // tslint:disable-next-line:variable-name

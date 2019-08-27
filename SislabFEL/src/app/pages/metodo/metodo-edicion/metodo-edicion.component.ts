@@ -1,3 +1,4 @@
+import { DetalleMetodo } from './../../../_model/detalleMetodo';
 import { MetodoService } from './../../../_service/metodo.service';
 import { Metodo } from './../../../_model/metodo';
 import { ServicioService } from './../../../_service/servicio.service';
@@ -21,6 +22,8 @@ export class MetodoEdicionComponent implements OnInit {
   edicion = false;
   metodo: Metodo;
   datosFila = this.data;
+  dmetodo: DetalleMetodo[] = [];
+  idExistencia: string;
   // tslint:disable-next-line:max-line-length
   constructor( private dialogRef: MatDialogRef<MetodoEdicionComponent>, @Inject(MAT_DIALOG_DATA) public data: Metodo, public dialog: MatDialog, private route: ActivatedRoute, private metodoService: MetodoService, private servicioService: ServicioService, private router: Router, private snackBar: MatSnackBar) { }
 
@@ -60,7 +63,13 @@ export class MetodoEdicionComponent implements OnInit {
       });
     } else {
       console.log('Vino a registrar');
+      console.log(this.idExistencia);
       this.metodo.servicio.id_servicio = this.selected;
+      // tslint:disable-next-line:prefer-const
+      let dMet = new DetalleMetodo();
+      dMet.id_existencia = this.idExistencia;
+      this.dmetodo.push(dMet);
+      this.metodo.detalleMetodo = this.dmetodo;
       console.log(this.metodo);
       console.log('Selecteeeed');
       console.log(this.selected);
@@ -76,7 +85,16 @@ export class MetodoEdicionComponent implements OnInit {
   }
 
   agregarDetalle() {
-    this.dialog.open(AgregarMetodoComponent, { });
+    // this.dialog.open(AgregarMetodoComponent, { });
+    const dialogRef =  this.dialog.open(AgregarMetodoComponent, { });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Dialog ult');
+      this.idExistencia = result;
+      console.log(this.idExistencia);
+      /*this.unidadM = this.data.unidadMedida.medida_um;
+      this.producto = this.data.producto.nombre_pr;
+      this.cantidad = this.data.cantidad_e;*/
+    });
   }
   notificar(mensaje: string, accion: string) {
     console.log('Vino a modificar');

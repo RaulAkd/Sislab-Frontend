@@ -13,6 +13,7 @@ import { ExistenciasComponent } from '../../../existencias/existencias.component
 
 export class AgregarMetodoComponent implements OnInit {
   data: Existencias;
+  idExistencia: string;
   unidadM: string;
   producto: string;
   cantidad: number;
@@ -31,6 +32,7 @@ export class AgregarMetodoComponent implements OnInit {
       this.unidadM = this.data.unidadMedida.medida_um;
       this.producto = this.data.producto.nombre_pr;
       this.cantidad = this.data.cantidad_e;
+      this.idExistencia = this.data.id_existencia;
     });
   }
 }

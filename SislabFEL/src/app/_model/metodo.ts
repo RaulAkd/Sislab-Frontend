@@ -1,4 +1,5 @@
 import { Servicio } from './servicio';
+import { DetalleMetodo } from './detalleMetodo';
 
 export class Metodo {
     // tslint:disable-next-line:variable-name
@@ -13,4 +14,6 @@ export class Metodo {
     nombre_mt: string;
     // tslint:disable-next-line:variable-name
     aux_idmetodo: string;
+    // tslint:disable-next-line:variable-name
+    detalleMetodo: DetalleMetodo[];
 }
