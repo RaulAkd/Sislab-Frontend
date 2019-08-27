@@ -20,6 +20,8 @@ import { TipoPersonalComponent } from './pages/tipo-personal/tipo-personal.compo
 import { TipoPersonalEdicionComponent } from './pages/tipo-personal/tipo-personal-edicion/tipo-personal-edicion.component';
 import { PersonalComponent } from './pages/personal/personal.component';
 import { PersonalEdicionComponent } from './pages/personal/personal-edicion/personal-edicion.component';
+import { ExistenciasComponent } from './pages/existencias/existencias.component';
+import { ExistenciasEdicionComponent } from './pages/existencias/existencias-edicion/existencias-edicion.component';
 
 const routes: Routes = [
   {
@@ -163,6 +165,21 @@ const routes: Routes = [
       {
         path: 'edicion/:id_personal',
         component: PersonalComponent
+      }
+    ]
+  },
+  // Micro servicio 3
+  {
+    component: ExistenciasComponent,
+    path: 'existencias',
+    children: [
+      {
+        path: 'nuevo',
+        component: ExistenciasEdicionComponent
+      },
+      {
+        path: 'edicion/:id_existencia',
+        component: ExistenciasEdicionComponent
       }
     ]
   }

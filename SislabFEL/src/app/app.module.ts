@@ -27,6 +27,9 @@ import { TipoPersonalEdicionComponent } from './pages/tipo-personal/tipo-persona
 import { PersonalComponent } from './pages/personal/personal.component';
 import { PersonalEdicionComponent } from './pages/personal/personal-edicion/personal-edicion.component';
 import { AgregarMetodoComponent } from './pages/metodo/metodo-edicion/agregar-metodo/agregar-metodo.component';
+import { ExistenciasComponent } from './pages/existencias/existencias.component';
+import { ExistenciasEdicionComponent } from './pages/existencias/existencias-edicion/existencias-edicion.component';
+import { ExistenciasMostrarComponent } from './pages/existencias/existencias-mostrar/existencias-mostrar.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +56,9 @@ import { AgregarMetodoComponent } from './pages/metodo/metodo-edicion/agregar-me
     PersonalComponent,
     PersonalEdicionComponent,
     AgregarMetodoComponent,
+    ExistenciasComponent,
+    ExistenciasEdicionComponent,
+    ExistenciasMostrarComponent,
   ],
   entryComponents: [
     TipoClienteEdicionComponent,
@@ -62,7 +68,10 @@ import { AgregarMetodoComponent } from './pages/metodo/metodo-edicion/agregar-me
     UnidadEdicionComponent,
     LaboratorioEdicionComponent,
     PersonalEdicionComponent,
-    AgregarMetodoComponent
+    AgregarMetodoComponent,
+    ExistenciasEdicionComponent,
+    ExistenciasMostrarComponent,
+    ExistenciasComponent
   ],
   imports: [
     BrowserModule,
