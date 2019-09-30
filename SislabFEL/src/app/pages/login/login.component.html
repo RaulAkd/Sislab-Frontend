@@ -1,0 +1,28 @@
+    <mat-card>
+        <div class="inputGroup inputGroup1" style="text-align: center">
+            <label>Login Sislab</label>    
+          </div>
+          <div class="inputGroup inputGroup1" style="text-align: center">
+              <mat-form-field class="example-full-width">
+                  <input matInput [(ngModel)]="usuario" placeholder="Usuario">
+              </mat-form-field>
+          </div>
+      
+          <div class="inputGroup inputGroup2" style="text-align: center">
+              <mat-form-field class="example-full-width">
+                  <input matInput [(ngModel)]="clave" placeholder="Ingrese su clave">
+              </mat-form-field>
+              <div style="text-align: center">
+                  <a routerLink="/recuperar">¿Olvidaste tu contraseña?</a>
+              </div>
+          </div>
+          <div class="inputGroup inputGroup3" style="text-align: center">
+              <button  mat-raised-button color="primary" id="login" (click)="iniciarSesion()">Iniciar Sesión
+                  <i class="fa fa-sign-in" aria-hidden="true"></i>
+              </button>
+          </div>
+        <br/>
+          <mat-card *ngIf="mensaje">{{mensaje}}</mat-card>
+          <mat-card *ngIf="error">{{error}}</mat-card>
+                  
+    </mat-card>

@@ -1,0 +1,135 @@
+<div class="container">
+    
+    <button mat-mini-fab color="primary" [routerLink]="['nuevo']" (click)="openDialog()" id="botonNuevo">
+        <mat-icon>add</mat-icon>
+    </button>
+
+    <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+    <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort>          
+            <!-- ID Column -->
+            <ng-container matColumnDef="id_producto">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+                <td mat-cell *matCellDef="let row"> {{row.id_producto}} </td>
+            </ng-container>
+
+            <!-- ID Column -->
+            <ng-container matColumnDef="riesgoEspecifico">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Riesgo Especifico </th>
+                <td mat-cell *matCellDef="let row"> {{row.riesgoEspecifico.id_riesgoespecifico}} </td>
+            </ng-container> 
+
+            <!-- Nombre Column -->
+            <ng-container matColumnDef="nombre_pr">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+                <td mat-cell *matCellDef="let row"> {{row.nombre_pr}} </td>
+            </ng-container>
+
+            <!-- Descripcion Column -->
+            <ng-container matColumnDef="descr_pr">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Descripcion Producto </th>
+                <td mat-cell *matCellDef="let row"> {{row.descr_pr}} </td>
+            </ng-container>
+                      
+            <!-- Stock Minimo Column -->
+            <ng-container matColumnDef="stockmin_pr">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Stock Minimo </th>
+                <td mat-cell *matCellDef="let row"> {{row.stockmin_pr}} </td>
+            </ng-container>
+            
+            <!-- Stock Column -->
+            <ng-container matColumnDef="stock_pr">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Stock </th>
+                <td mat-cell *matCellDef="let row"> {{row.stock_pr}} </td>
+            </ng-container>
+
+            <!-- Stock CRT Column -->
+            <ng-container matColumnDef="stockcrt_pr">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Stock Crt </th>
+                <td mat-cell *matCellDef="let row"> {{row.stockcrt_pr}} </td>
+            </ng-container>
+
+            <!-- IUPAC Column -->
+            <ng-container matColumnDef="iupac_pr">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Iupac </th>
+                <td mat-cell *matCellDef="let row"> {{row.iupac_pr}} </td>
+            </ng-container>
+
+            <!-- Riesgo Producto Column -->
+            <ng-container matColumnDef="riesgo_pr">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Riesgo </th>
+                <td mat-cell *matCellDef="let row"> {{row.riesgo_pr}} </td>
+            </ng-container>
+
+            <!-- Formula Column -->
+            <ng-container matColumnDef="formula_pr">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Formula </th>
+                <td mat-cell *matCellDef="let row"> {{row.formula_pr}} </td>
+            </ng-container>
+
+            <!-- Color Riesgo Column -->
+            <ng-container matColumnDef="colorriesgo_pr">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Color Riesgo </th>
+                <td mat-cell *matCellDef="let row"> {{row.colorriesgo_pr}} </td>
+            </ng-container>
+
+            <!-- Precio Column -->
+            <ng-container matColumnDef="precio_pr">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Precio </th>
+                <td mat-cell *matCellDef="let row"> {{row.precio_pr}} </td>
+            </ng-container>
+
+            <!-- Riesgo Salud Column -->
+            <ng-container matColumnDef="riesgosalud_pr">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Riesgo Salud </th>
+                <td mat-cell *matCellDef="let row"> {{row.riesgosalud_pr}} </td>
+            </ng-container>
+
+            <!-- Riesgo Inflamabilidad Column -->
+            <ng-container matColumnDef="riesgoinflamabilidad_pr">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Riesgo Inflamabilidad </th>
+                <td mat-cell *matCellDef="let row"> {{row.riesgoinflamabilidad_pr}} </td>
+            </ng-container>
+
+            <!-- Riesgo Reactividad Column -->
+            <ng-container matColumnDef="riesgoreactividad_pr">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Riesgo Reactividad </th>
+                <td mat-cell *matCellDef="let row"> {{row.riesgoreactividad_pr}} </td>
+            </ng-container>
+
+            <!-- Aux Id Column -->
+            <ng-container matColumnDef="aux_idprod">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Aux ID </th>
+                <td mat-cell *matCellDef="let row"> {{row.aux_idprod}} </td>
+            </ng-container>
+
+            <!-- Tipo Producto Column -->
+            <ng-container matColumnDef="id_tipoprod">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> ID tipo producto </th>
+                <td mat-cell *matCellDef="let row"> {{row.id_tipoprod}} </td>
+            </ng-container>
+
+            <!-- Acciones Column -->
+            <ng-container matColumnDef="acciones">
+                <th mat-header-cell *matHeaderCellDef> Acciones </th>
+                <!-- <td mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.color}} </td> -->
+                <td mat-cell *matCellDef="let row">
+                    <button mat-icon-button color="primary" [routerLink]="['edicion', row.id_producto]" (click)="openDialog(row)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button mat-icon-button color="accent" (click)="eliminarProducto(row.id_producto)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+                      
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row  *matRowDef="let row; columns: displayedColumnsData;">
+            </tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    </div>        
+</div>
+

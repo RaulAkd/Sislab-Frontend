@@ -4,12 +4,7 @@
             <mat-form-field class="example-full-width">
                 <input matInput [(ngModel)]="metodo.id_metodo" placeholder="ID">
             </mat-form-field>
-        </div>
-
-        <div>
-            <button mat-button (click)= "agregarDetalle()" >Agregar Detalle</button>
-        </div>
-        
+        </div> 
 
         <mat-form-field class="example-full-width">
             <mat-select placeholder="Servicio" [(value)]="selected">
@@ -34,6 +29,22 @@
         <mat-form-field class="example-full-width">
             <input matInput [(ngModel)]="metodo.aux_idmetodo" placeholder="Auxiliar">
         </mat-form-field>
+
+        <div>
+            <button mat-button (click)= "agregarDetalle()" >Agregar Detalle</button>
+        </div>
+
+        <div>
+            <mat-accordion>
+                <mat-expansion-panel id="expansionPanel">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>Mostrar Detalle</mat-panel-title>
+                  </mat-expansion-panel-header>              
+                  id Existencia: {{idExistencia}} Nombre: {{nombre}} Cantidad: {{cantidad}}
+                </mat-expansion-panel>
+            </mat-accordion>            
+        </div>
+       
 </div> 
 <div mat-dialog-actions>
     <button mat-button cdkFocusInitial (click)= "operar(metodo)" >Aceptar</button>

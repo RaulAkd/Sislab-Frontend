@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>Ingrese datos de Caracteristica</h1>
+<div mat-dialog-content>
+        <div [hidden] = "true">
+            <mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="caracteristica.id_caracteristica" placeholder="ID">
+            </mat-form-field>
+        </div>
+
+        <mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="caracteristica.nombre_cr" placeholder="Nombre">
+        </mat-form-field>
+    
+        <mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="caracteristica.descr_cr" placeholder="Descripcion" >
+        </mat-form-field>    
+</div> 
+<div mat-dialog-actions>
+    <button mat-button cdkFocusInitial (click)= "operar()" >Aceptar</button>
+    <button mat-button mat-dialog-close="false">Cancelar</button>
+</div>

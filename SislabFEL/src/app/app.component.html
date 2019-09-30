@@ -16,7 +16,7 @@
                             <div id="cardSesion">
                                 <P>Bienvenido:</P>
                                 <p>Rol()</p>
-                                <button id="buttonCerrarSesion" mat-button>Cerrar Sesión</button>
+                                <button id="buttonCerrarSesion" (click)="loginService.cerrarSesion()"  mat-button>Cerrar Sesión</button>
                             </div>
                         </span>        
                     </mat-toolbar-row>
@@ -24,10 +24,55 @@
                 </mat-toolbar>
         </div>
         <div class="container3">
-            <mat-drawer-container class="example-container">
-                    <mat-drawer id="side" mode="side" opened>
+            <mat-drawer-container  class="example-container">
+                    <mat-drawer *ngIf="loginService.estaLogeado()" id="side" mode="side" opened>
                         <p>Menú de Opciones</p>
-                        
+                        <mat-accordion id="acordion">
+                            <mat-expansion-panel id="expansionPanel">
+                              <mat-expansion-panel-header>
+                                <mat-panel-title>Proformas</mat-panel-title>
+                              </mat-expansion-panel-header>              
+                              <a [routerLink]="['/cliente']">Cliente</a><br>
+                              <a [routerLink]="['/metodo']">Metodo</a><br>
+                              <a [routerLink]="['/proforma']">Proforma</a><br>
+                              <a [routerLink]="['/servicio']">Servicio</a><br>
+                              <a [routerLink]="['/tipoCliente']">Tipo Cliente</a><br>
+                              <a [routerLink]="['/tipoServicio']">Tipo Servicio</a><br>
+                            </mat-expansion-panel>
+                        </mat-accordion>                          
+                        <mat-accordion>
+                            <mat-expansion-panel id="expansionPanel2">
+                              <mat-expansion-panel-header>
+                                <mat-panel-title>Orden de Trabajo</mat-panel-title>
+                              </mat-expansion-panel-header>              
+                              <a [routerLink]="['/cargosPersonal']">Cargos Personal</a><br>
+                              <a [routerLink]="['/laboratorio']">Laboratorio</a><br>
+                              <a [routerLink]="['/personal']">Personal</a><br>
+                              <a [routerLink]="['/tipoPersonal']">Tipo Personal</a><br>
+                              <a [routerLink]="['/unidad']">Unidad</a><br>
+                            </mat-expansion-panel>
+                        </mat-accordion>                          
+                        <mat-accordion>
+                            <mat-expansion-panel id="expansionPanel3">
+                              <mat-expansion-panel-header>
+                                <mat-panel-title>Gestion de Productos</mat-panel-title>
+                              </mat-expansion-panel-header>              
+                              <a [routerLink]="['/estadoProducto']">Estado Producto</a><br>
+                              <a [routerLink]="['/bodega']">Bodega</a><br>
+                              <a [routerLink]="['/caracteristica']">Caracteristica</a><br>
+                              <a [routerLink]="['/concentracion']">Concentracion</a><br>
+                              <a [routerLink]="['/estadoProducto']">Estado Producto</a><br>
+                              <a [routerLink]="['/existencias']">Existencias</a><br>
+                              <a [routerLink]="['/grado']">Grado</a><br>
+                              <a [routerLink]="['/posgiro']">Posgiro</a><br>
+                              <a [routerLink]="['/presentacion']">Presentacion</a><br>
+                              <a [routerLink]="['/producto']">Producto</a><br>
+                              <a [routerLink]="['/riesgoEspecifico']">Riesgo Especifico</a><br>
+                              <a [routerLink]="['/tipoProducto']">Tipo Producto</a><br>
+                              <a [routerLink]="['/tipoProveedor']">Tipo Proveedor</a><br>
+                              <a [routerLink]="['/unidadMedida']">Unidad Medida</a><br>
+                            </mat-expansion-panel>
+                        </mat-accordion>                          
                     </mat-drawer>
                     <mat-drawer-content>
                         

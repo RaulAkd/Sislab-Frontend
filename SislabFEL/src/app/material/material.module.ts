@@ -10,6 +10,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
+import {MatExpansionModule} from '@angular/material/expansion';
 import {MatInputModule, MatIconModule, MatDialogModule, MatSnackBar, MatSnackBarModule} from '@angular/material';
 @NgModule({
     imports: [
@@ -27,7 +28,8 @@ import {MatInputModule, MatIconModule, MatDialogModule, MatSnackBar, MatSnackBar
         MatIconModule,
         MatDialogModule,
         MatSnackBarModule,
-        MatSelectModule
+        MatSelectModule,
+        MatExpansionModule
      ],
     exports: [
         MatButtonModule,
@@ -42,7 +44,8 @@ import {MatInputModule, MatIconModule, MatDialogModule, MatSnackBar, MatSnackBar
         MatIconModule,
         MatDialogModule,
         MatSnackBarModule,
-        MatSelectModule
+        MatSelectModule,
+        MatExpansionModule
     ],
     providers: [],
 })

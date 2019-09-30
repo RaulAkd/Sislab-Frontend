@@ -22,8 +22,45 @@ import { PersonalComponent } from './pages/personal/personal.component';
 import { PersonalEdicionComponent } from './pages/personal/personal-edicion/personal-edicion.component';
 import { ExistenciasComponent } from './pages/existencias/existencias.component';
 import { ExistenciasEdicionComponent } from './pages/existencias/existencias-edicion/existencias-edicion.component';
+import { EstadoProductoComponent } from './pages/estado-producto/estado-producto.component';
+import { EstadoProductoEdicionComponent } from './pages/estado-producto/estado-producto-edicion/estado-producto-edicion.component';
+import { ConcentracionComponent } from './pages/concentracion/concentracion.component';
+import { ConcentracionEdicionComponent } from './pages/concentracion/concentracion-edicion/concentracion-edicion.component';
+import { PosgiroComponent } from './pages/posgiro/posgiro.component';
+import { PosgiroEdicionComponent } from './pages/posgiro/posgiro-edicion/posgiro-edicion.component';
+import { PresentacionComponent } from './pages/presentacion/presentacion.component';
+import { PresentacionEdicionComponent } from './pages/presentacion/presentacion-edicion/presentacion-edicion.component';
+import { GradoComponent } from './pages/grado/grado.component';
+import { GradoEdicionComponent } from './pages/grado/grado-edicion/grado-edicion.component';
+import { UnidadMedidaComponent } from './pages/unidad-medida/unidad-medida.component';
+import { UnidadMedidaEdicionComponent } from './pages/unidad-medida/unidad-medida-edicion/unidad-medida-edicion.component';
+import { TipoProductoComponent } from './pages/tipo-producto/tipo-producto.component';
+import { TipoProductoEdicionComponent } from './pages/tipo-producto/tipo-producto-edicion/tipo-producto-edicion.component';
+import { TipoProveedorComponent } from './pages/tipo-proveedor/tipo-proveedor.component';
+import { TipoProveedorEdicionComponent } from './pages/tipo-proveedor/tipo-proveedor-edicion/tipo-proveedor-edicion.component';
+import { BodegaComponent } from './pages/bodega/bodega.component';
+import { BodegaEdicionComponent } from './pages/bodega/bodega-edicion/bodega-edicion.component';
+import { CaracteristicaComponent } from './pages/caracteristica/caracteristica.component';
+import { CaracteristicaEdicionComponent } from './pages/caracteristica/caracteristica-edicion/caracteristica-edicion.component';
+import { RiesgoEspecificoComponent } from './pages/riesgo-especifico/riesgo-especifico.component';
+import { RiesgoEspecificoEdicionComponent } from './pages/riesgo-especifico/riesgo-especifico-edicion/riesgo-especifico-edicion.component';
+import { ProductoComponent } from './pages/producto/producto.component';
+import { ProductoEdicionComponent } from './pages/producto/producto-edicion/producto-edicion.component';
+import { ProformaComponent } from './pages/proforma/proforma.component';
+import { ProformaEdicionComponent } from './pages/proforma/proforma-edicion/proforma-edicion.component';
+import { LoginComponent } from './pages/login/login.component';
+import { GuardService } from './_service/guard.service';
 
 const routes: Routes = [
+  {
+    component: LoginComponent,
+    path: 'login',
+  },
+  {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full'
+  },
   {
     component: TipoClienteComponent,
     path: 'tipoCliente',
@@ -100,6 +137,7 @@ const routes: Routes = [
   {
     component: UnidadComponent,
     path: 'unidad',
+    canActivate: [GuardService],
     children: [
       {
         path: 'nuevo',
@@ -114,6 +152,7 @@ const routes: Routes = [
   {
     component: LaboratorioComponent,
     path: 'laboratorio',
+    canActivate: [GuardService],
     children: [
       {
         path: 'nuevo',
@@ -128,6 +167,7 @@ const routes: Routes = [
   {
     component: CargosPersonalComponent,
     path: 'cargosPersonal',
+    canActivate: [GuardService],
     children: [
       {
         path: 'nuevo',
@@ -142,6 +182,7 @@ const routes: Routes = [
   {
     component: TipoPersonalComponent,
     path: 'tipoPersonal',
+    canActivate: [GuardService],
     children: [
       {
         path: 'nuevo',
@@ -157,6 +198,7 @@ const routes: Routes = [
   {
     component: PersonalComponent,
     path: 'personal',
+    canActivate: [GuardService],
     children: [
       {
         path: 'nuevo',
@@ -180,6 +222,189 @@ const routes: Routes = [
       {
         path: 'edicion/:id_existencia',
         component: ExistenciasEdicionComponent
+      }
+    ]
+  },
+  {
+    component: EstadoProductoComponent,
+    path: 'estadoProducto',
+    children: [
+      {
+        path: 'nuevo',
+        component: EstadoProductoEdicionComponent
+      },
+      {
+        path: 'edicion/:id_estadoprod',
+        component: EstadoProductoEdicionComponent
+      }
+    ]
+  },
+  {
+    component: ConcentracionComponent,
+    path: 'concentracion',
+    children: [
+      {
+        path: 'nuevo',
+        component: ConcentracionEdicionComponent
+      },
+      {
+        path: 'edicion/:id_concentracion',
+        component: ConcentracionEdicionComponent
+      }
+    ]
+  },
+  {
+    component: PosgiroComponent,
+    path: 'posgiro',
+    children: [
+      {
+        path: 'nuevo',
+        component: PosgiroEdicionComponent
+      },
+      {
+        path: 'edicion/:id_posgiro',
+        component: PosgiroEdicionComponent
+      }
+    ]
+  },
+  {
+    component: PresentacionComponent,
+    path: 'presentacion',
+    children: [
+      {
+        path: 'nuevo',
+        component: PresentacionEdicionComponent
+      },
+      {
+        path: 'edicion/:id_presentacion',
+        component: PresentacionEdicionComponent
+      }
+    ]
+  },
+  {
+    component: GradoComponent,
+    path: 'grado',
+    children: [
+      {
+        path: 'nuevo',
+        component: GradoEdicionComponent
+      },
+      {
+        path: 'edicion/:id_grado',
+        component: GradoEdicionComponent
+      }
+    ]
+  },
+  {
+    component: UnidadMedidaComponent,
+    path: 'unidadMedida',
+    children: [
+      {
+        path: 'nuevo',
+        component: UnidadMedidaEdicionComponent
+      },
+      {
+        path: 'edicion/:id_umedida',
+        component: UnidadMedidaEdicionComponent
+      }
+    ]
+  },
+  {
+    component: TipoProductoComponent,
+    path: 'tipoProducto',
+    children: [
+      {
+        path: 'nuevo',
+        component: TipoProductoEdicionComponent
+      },
+      {
+        path: 'edicion/:id_tipoprod',
+        component: TipoProductoEdicionComponent
+      }
+    ]
+  },
+  {
+    component: TipoProveedorComponent,
+    path: 'tipoProveedor',
+    children: [
+      {
+        path: 'nuevo',
+        component: TipoProveedorEdicionComponent
+      },
+      {
+        path: 'edicion/:id_tipoproveedor',
+        component: TipoProveedorEdicionComponent
+      }
+    ]
+  },
+  {
+    component: BodegaComponent,
+    path: 'bodega',
+    children: [
+      {
+        path: 'nuevo',
+        component: BodegaEdicionComponent
+      },
+      {
+        path: 'edicion/:id_bodega',
+        component: BodegaEdicionComponent
+      }
+    ]
+  },
+  {
+    component: CaracteristicaComponent,
+    path: 'caracteristica',
+    children: [
+      {
+        path: 'nuevo',
+        component: CaracteristicaEdicionComponent
+      },
+      {
+        path: 'edicion/:id_caracteristica',
+        component: CaracteristicaEdicionComponent
+      }
+    ]
+  },
+  {
+    component: RiesgoEspecificoComponent,
+    path: 'riesgoEspecifico',
+    children: [
+      {
+        path: 'nuevo',
+        component: RiesgoEspecificoEdicionComponent
+      },
+      {
+        path: 'edicion/:id_riesgoespecifico',
+        component: RiesgoEspecificoEdicionComponent
+      }
+    ]
+  },
+  {
+    component: ProductoComponent,
+    path: 'producto',
+    children: [
+      {
+        path: 'nuevo',
+        component: ProductoEdicionComponent
+      },
+      {
+        path: 'edicion/:id_producto',
+        component: ProductoEdicionComponent
+      }
+    ]
+  }
+  ,
+  {
+    component: ProformaComponent,
+    path: 'proforma',
+    children: [
+      {
+        path: 'nuevo',
+        component: ProformaEdicionComponent
+      },
+      {
+        path: 'edicion/:id_proforma',
+        component: ProformaEdicionComponent
       }
     ]
   }

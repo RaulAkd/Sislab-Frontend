@@ -1,4 +1,4 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MaterialModule } from './material/material.module';
@@ -30,7 +30,46 @@ import { AgregarMetodoComponent } from './pages/metodo/metodo-edicion/agregar-me
 import { ExistenciasComponent } from './pages/existencias/existencias.component';
 import { ExistenciasEdicionComponent } from './pages/existencias/existencias-edicion/existencias-edicion.component';
 import { ExistenciasMostrarComponent } from './pages/existencias/existencias-mostrar/existencias-mostrar.component';
+import { EstadoProductoComponent } from './pages/estado-producto/estado-producto.component';
+import { EstadoProductoEdicionComponent } from './pages/estado-producto/estado-producto-edicion/estado-producto-edicion.component';
+import { ConcentracionComponent } from './pages/concentracion/concentracion.component';
+import { ConcentracionEdicionComponent } from './pages/concentracion/concentracion-edicion/concentracion-edicion.component';
+import { PosgiroComponent } from './pages/posgiro/posgiro.component';
+import { PosgiroEdicionComponent } from './pages/posgiro/posgiro-edicion/posgiro-edicion.component';
+import { PresentacionComponent } from './pages/presentacion/presentacion.component';
+import { PresentacionEdicionComponent } from './pages/presentacion/presentacion-edicion/presentacion-edicion.component';
+import { GradoComponent } from './pages/grado/grado.component';
+import { GradoEdicionComponent } from './pages/grado/grado-edicion/grado-edicion.component';
+import { UnidadMedidaComponent } from './pages/unidad-medida/unidad-medida.component';
+import { UnidadMedidaEdicionComponent } from './pages/unidad-medida/unidad-medida-edicion/unidad-medida-edicion.component';
+import { TipoProductoComponent } from './pages/tipo-producto/tipo-producto.component';
+import { TipoProductoEdicionComponent } from './pages/tipo-producto/tipo-producto-edicion/tipo-producto-edicion.component';
+import { TipoProveedorComponent } from './pages/tipo-proveedor/tipo-proveedor.component';
+import { TipoProveedorEdicionComponent } from './pages/tipo-proveedor/tipo-proveedor-edicion/tipo-proveedor-edicion.component';
+import { BodegaComponent } from './pages/bodega/bodega.component';
+import { BodegaEdicionComponent } from './pages/bodega/bodega-edicion/bodega-edicion.component';
+import { CaracteristicaComponent } from './pages/caracteristica/caracteristica.component';
+import { CaracteristicaEdicionComponent } from './pages/caracteristica/caracteristica-edicion/caracteristica-edicion.component';
+import { RiesgoEspecificoComponent } from './pages/riesgo-especifico/riesgo-especifico.component';
+import { RiesgoEspecificoEdicionComponent } from './pages/riesgo-especifico/riesgo-especifico-edicion/riesgo-especifico-edicion.component';
+import { ProductoComponent } from './pages/producto/producto.component';
+import { ProductoEdicionComponent } from './pages/producto/producto-edicion/producto-edicion.component';
+import { ProformaComponent } from './pages/proforma/proforma.component';
+import { ProformaEdicionComponent } from './pages/proforma/proforma-edicion/proforma-edicion.component';
+import { LoginComponent } from './pages/login/login.component';
+import { ServerErrorsInterceptor } from './_shared/server-errors.interceptor';
 
+import { JwtModule } from '@auth0/angular-jwt';
+import { TOKEN_NAME } from './_shared/var.constant';
+
+export function tokenGetter() {
+  // tslint:disable-next-line:prefer-const
+  let tk = JSON.parse(sessionStorage.getItem(TOKEN_NAME));
+  // tslint:disable-next-line:prefer-const
+  let token = tk != null ? tk.access_token : '';
+  // console.log(token);
+  return token;
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,6 +98,34 @@ import { ExistenciasMostrarComponent } from './pages/existencias/existencias-mos
     ExistenciasComponent,
     ExistenciasEdicionComponent,
     ExistenciasMostrarComponent,
+    EstadoProductoComponent,
+    EstadoProductoEdicionComponent,
+    ConcentracionComponent,
+    ConcentracionEdicionComponent,
+    PosgiroComponent,
+    PosgiroEdicionComponent,
+    PresentacionComponent,
+    PresentacionEdicionComponent,
+    GradoComponent,
+    GradoEdicionComponent,
+    UnidadMedidaComponent,
+    UnidadMedidaEdicionComponent,
+    TipoProductoComponent,
+    TipoProductoEdicionComponent,
+    TipoProveedorComponent,
+    TipoProveedorEdicionComponent,
+    BodegaComponent,
+    BodegaEdicionComponent,
+    CaracteristicaComponent,
+    CaracteristicaEdicionComponent,
+    RiesgoEspecificoComponent,
+    RiesgoEspecificoEdicionComponent,
+    ProductoComponent,
+    ProductoEdicionComponent,
+    ProformaComponent,
+    ProformaEdicionComponent,
+    ProformaEdicionComponent,
+    LoginComponent
   ],
   entryComponents: [
     TipoClienteEdicionComponent,
@@ -71,7 +138,18 @@ import { ExistenciasMostrarComponent } from './pages/existencias/existencias-mos
     AgregarMetodoComponent,
     ExistenciasEdicionComponent,
     ExistenciasMostrarComponent,
-    ExistenciasComponent
+    ExistenciasComponent,
+    EstadoProductoEdicionComponent,
+    PosgiroEdicionComponent,
+    PresentacionEdicionComponent,
+    GradoEdicionComponent,
+    UnidadMedidaEdicionComponent,
+    TipoProductoEdicionComponent,
+    TipoProveedorEdicionComponent,
+    BodegaEdicionComponent,
+    CaracteristicaEdicionComponent,
+    RiesgoEspecificoEdicionComponent,
+    ProductoEdicionComponent
   ],
   imports: [
     BrowserModule,
@@ -79,9 +157,21 @@ import { ExistenciasMostrarComponent } from './pages/existencias/existencias-mos
     MaterialModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    JwtModule.forRoot({
+      config: {
+        // tslint:disable-next-line:object-literal-shorthand
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ['localhost:8082'],
+        // blacklistedRoutes: ['localhost:8082/login/enviarCorreo']
+      }
+    })
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: ServerErrorsInterceptor,
+    multi: true,
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

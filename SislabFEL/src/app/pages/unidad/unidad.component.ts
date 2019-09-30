@@ -58,12 +58,13 @@ export class UnidadComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
-
+    console.log('vino a listar');
     this.unidadService.listarUnidad().subscribe( data => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
+    console.log('Ya listo');
   }
 
   applyFilter(filterValue: string) {

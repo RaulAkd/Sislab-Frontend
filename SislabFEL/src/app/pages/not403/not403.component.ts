@@ -1,3 +1,5 @@
+import { TOKEN_NAME } from './../../_shared/var.constant';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Not403Component implements OnInit {
 
+  usuario: string;
+
   constructor() { }
 
   ngOnInit() {
+    const helper = new JwtHelperService();
+
+    // tslint:disable-next-line:prefer-const
+    let token = JSON.parse(sessionStorage.getItem(TOKEN_NAME));
+    const decodedToken = helper.decodeToken(token.access_token);
+    this.usuario = decodedToken.user_name;
   }
 
 }

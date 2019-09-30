@@ -1,3 +1,4 @@
+import { Existencias } from './../../../_model/existencias';
 import { DetalleMetodo } from './../../../_model/detalleMetodo';
 import { MetodoService } from './../../../_service/metodo.service';
 import { Metodo } from './../../../_model/metodo';
@@ -24,6 +25,10 @@ export class MetodoEdicionComponent implements OnInit {
   datosFila = this.data;
   dmetodo: DetalleMetodo[] = [];
   idExistencia: string;
+  dataExist: Existencias;
+  nombre: string;
+  cantidad: number;
+  id: string;
   // tslint:disable-next-line:max-line-length
   constructor( private dialogRef: MatDialogRef<MetodoEdicionComponent>, @Inject(MAT_DIALOG_DATA) public data: Metodo, public dialog: MatDialog, private route: ActivatedRoute, private metodoService: MetodoService, private servicioService: ServicioService, private router: Router, private snackBar: MatSnackBar) { }
 
@@ -54,8 +59,9 @@ export class MetodoEdicionComponent implements OnInit {
   operar(metodoNg?: Metodo) {
     console.log('vino a operar');
     if (this.metodo.id_metodo != null) {
+      console.log(this.metodo.id_metodo);
       this.metodo.servicio.id_servicio = this.selected;
-      this.metodoService.modificarMetodo(this.metodo).subscribe( data => {
+      this.metodoService.registrarMetodo(this.metodo).subscribe( data => {
         this.metodoService.listarMetodo().subscribe(metodos => {
           this.metodoService.MetodoCambio.next(metodos);
           this.notificar('Se modifico', 'Aviso');
@@ -89,8 +95,14 @@ export class MetodoEdicionComponent implements OnInit {
     const dialogRef =  this.dialog.open(AgregarMetodoComponent, { });
     dialogRef.afterClosed().subscribe(result => {
       console.log('Dialog ult');
-      this.idExistencia = result;
-      console.log(this.idExistencia);
+      console.log(result);
+      this.dataExist = result;
+      this.idExistencia = this.dataExist.id_existencia;
+      this.nombre = this.dataExist.producto.nombre_pr;
+      this.cantidad = this.dataExist.cantidad_e;
+
+      // this.idExistencia = result;
+      // console.log(this.idExistencia);
       /*this.unidadM = this.data.unidadMedida.medida_um;
       this.producto = this.data.producto.nombre_pr;
       this.cantidad = this.data.cantidad_e;*/
