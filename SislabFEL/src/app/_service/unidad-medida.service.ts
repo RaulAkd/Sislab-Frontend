@@ -1,5 +1,5 @@
 import { UnidadMedida } from './../_model/unidadMedida';
-import { HOST3 } from './../_shared/var.constant';
+import { HOST3, TOKEN_NAME } from './../_shared/var.constant';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { $ } from 'protractor';
@@ -16,6 +16,13 @@ export class UnidadMedidaService {
   constructor( private http: HttpClient) { }
 
   listarUnidadMedida() {
+    console.log('empieza metodo');
+    console.log(sessionStorage.getItem(TOKEN_NAME));
+    // tslint:disable-next-line:prefer-const
+    let access_token = JSON.parse(sessionStorage.getItem(TOKEN_NAME)).access_token;
+    console.log('el token es:');
+    console.log(access_token);
+    console.log(this.url);
     return this.http.get<UnidadMedida[]>(this.url);
   }
 

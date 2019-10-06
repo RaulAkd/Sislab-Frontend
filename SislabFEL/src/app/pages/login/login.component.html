@@ -1,22 +1,46 @@
     <mat-card>
-        <div class="inputGroup inputGroup1" style="text-align: center">
-            <label>Login Sislab</label>    
-          </div>
-          <div class="inputGroup inputGroup1" style="text-align: center">
-              <mat-form-field class="example-full-width">
-                  <input matInput [(ngModel)]="usuario" placeholder="Usuario">
-              </mat-form-field>
-          </div>
+        <form class="example-form">
+            <div style="text-align: center">
+                <label>Login Sislab</label>    
+            </div>
+          <!--  <mat-form-field class="example-full-width">
+                <input matInput placeholder="Email" [formControl]="usuarioF"
+                    [errorStateMatcher]="matcher">
+                    <mat-hint>Errors appear instantly!</mat-hint>
+                    <mat-error *ngIf="usuarioF.hasError('email') && !usuarioF.hasError('required')">
+                        Please enter a valid email address
+                    </mat-error>
+                    <mat-error *ngIf="usuarioF.hasError('required')">
+                      Email is <strong>required</strong>
+                    </mat-error>
+            </mat-form-field> -->
+            <div style="text-align: center">
+                <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Ingrese su usuario" [formControl]="usuarioF"
+                        [errorStateMatcher]="matcher">
+                        <mat-hint>ejemplo: usuario@dominio.com</mat-hint>
+                        <mat-error *ngIf="usuarioF.hasError('email') && !usuarioF.hasError('required')">
+                            Por favor ingrese una dirección de correo válida
+                        </mat-error>
+                        <mat-error *ngIf="usuarioF.hasError('required')">
+                          Usuario <strong>es obligatorio</strong>
+                        </mat-error>
+                </mat-form-field>
+            </div> 
+        </form>
       
-          <div class="inputGroup inputGroup2" style="text-align: center">
+          <div style="text-align: center">
               <mat-form-field class="example-full-width">
-                  <input matInput [(ngModel)]="clave" placeholder="Ingrese su clave">
+                <input matInput [(ngModel)]="clave" placeholder="Ingrese su clave" [type] = "hide ? 'password' : 'text'">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
               </mat-form-field>
               <div style="text-align: center">
-                  <a routerLink="/recuperar">¿Olvidaste tu contraseña?</a>
+                  <!-- <a routerLink="/recuperar">¿Olvidaste tu contraseña?</a> -->
               </div>
           </div>
-          <div class="inputGroup inputGroup3" style="text-align: center">
+          <div style="text-align: center">
               <button  mat-raised-button color="primary" id="login" (click)="iniciarSesion()">Iniciar Sesión
                   <i class="fa fa-sign-in" aria-hidden="true"></i>
               </button>

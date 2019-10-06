@@ -64,6 +64,7 @@ const routes: Routes = [
   {
     component: TipoClienteComponent,
     path: 'tipoCliente',
+    canActivate: [GuardService],
     children: [
       {
         path: 'nuevo',
@@ -79,6 +80,7 @@ const routes: Routes = [
   {
     component: ClienteComponent,
     path: 'cliente',
+    canActivate: [GuardService],
     children: [
       {
         path: 'nuevo',
@@ -94,6 +96,7 @@ const routes: Routes = [
   {
     component: TipoServicioComponent,
     path: 'tipoServicio',
+    canActivate: [GuardService],
     children: [
       {
         path: 'nuevo',
@@ -108,6 +111,7 @@ const routes: Routes = [
   {
     component: ServicioComponent,
     path: 'servicio',
+    canActivate: [GuardService],
     children: [
       {
         path: 'nuevo',
@@ -122,6 +126,7 @@ const routes: Routes = [
   {
     component: MetodoComponent,
     path: 'metodo',
+    canActivate: [GuardService],
     children: [
       {
         path: 'nuevo',
@@ -214,6 +219,7 @@ const routes: Routes = [
   {
     component: ExistenciasComponent,
     path: 'existencias',
+    canActivate: [GuardService],
     children: [
       {
         path: 'nuevo',
@@ -228,6 +234,7 @@ const routes: Routes = [
   {
     component: EstadoProductoComponent,
     path: 'estadoProducto',
+    canActivate: [GuardService],
     children: [
       {
         path: 'nuevo',
@@ -242,6 +249,7 @@ const routes: Routes = [
   {
     component: ConcentracionComponent,
     path: 'concentracion',
+    canActivate: [GuardService],
     children: [
       {
         path: 'nuevo',
@@ -256,6 +264,7 @@ const routes: Routes = [
   {
     component: PosgiroComponent,
     path: 'posgiro',
+    canActivate: [GuardService],
     children: [
       {
         path: 'nuevo',
@@ -270,6 +279,7 @@ const routes: Routes = [
   {
     component: PresentacionComponent,
     path: 'presentacion',
+    canActivate: [GuardService],
     children: [
       {
         path: 'nuevo',
@@ -284,6 +294,7 @@ const routes: Routes = [
   {
     component: GradoComponent,
     path: 'grado',
+    canActivate: [GuardService],
     children: [
       {
         path: 'nuevo',
@@ -298,6 +309,7 @@ const routes: Routes = [
   {
     component: UnidadMedidaComponent,
     path: 'unidadMedida',
+    canActivate: [GuardService],
     children: [
       {
         path: 'nuevo',
@@ -312,6 +324,7 @@ const routes: Routes = [
   {
     component: TipoProductoComponent,
     path: 'tipoProducto',
+    canActivate: [GuardService],
     children: [
       {
         path: 'nuevo',
@@ -326,6 +339,7 @@ const routes: Routes = [
   {
     component: TipoProveedorComponent,
     path: 'tipoProveedor',
+    canActivate: [GuardService],
     children: [
       {
         path: 'nuevo',
@@ -340,6 +354,7 @@ const routes: Routes = [
   {
     component: BodegaComponent,
     path: 'bodega',
+    canActivate: [GuardService],
     children: [
       {
         path: 'nuevo',
@@ -354,6 +369,7 @@ const routes: Routes = [
   {
     component: CaracteristicaComponent,
     path: 'caracteristica',
+    canActivate: [GuardService],
     children: [
       {
         path: 'nuevo',
@@ -368,6 +384,7 @@ const routes: Routes = [
   {
     component: RiesgoEspecificoComponent,
     path: 'riesgoEspecifico',
+    canActivate: [GuardService],
     children: [
       {
         path: 'nuevo',
@@ -382,6 +399,7 @@ const routes: Routes = [
   {
     component: ProductoComponent,
     path: 'producto',
+    canActivate: [GuardService],
     children: [
       {
         path: 'nuevo',
@@ -397,6 +415,7 @@ const routes: Routes = [
   {
     component: ProformaComponent,
     path: 'proforma',
+    canActivate: [GuardService],
     children: [
       {
         path: 'nuevo',

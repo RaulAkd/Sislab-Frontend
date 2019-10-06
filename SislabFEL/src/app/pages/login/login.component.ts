@@ -5,25 +5,41 @@ import { TOKEN_NAME } from '../../_shared/var.constant';
 import * as decode from 'jwt-decode';
 import { MenuService } from '../../_service/menu.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import {ErrorStateMatcher} from '@angular/material/core';
+import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+// export class LoginComponent implements ErrorStateMatcher {
+ export class LoginComponent implements OnInit {
 
   usuario: string;
   clave: string;
   mensaje = '';
   error = '';
+  hide = true;
 
+  usuarioF = new FormControl('', [
+    Validators.required,
+    Validators.email,
+  ]);
+
+  matcher = new MyErrorStateMatcher();
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
   constructor(private loginService: LoginService, private router: Router, private menuService: MenuService) { }
 
   ngOnInit() {
   }
 
   iniciarSesion() {
+    this.usuario = this.usuarioF.value;
+    console.log(this.usuario);
     this.loginService.login(this.usuario, this.clave).subscribe(data => {
       if (data) {
         const helper = new JwtHelperService();
@@ -42,9 +58,16 @@ export class LoginComponent implements OnInit {
           this.menuService.menuCambio.next(data);
         });*/
 
-        this.router.navigate(['unidad']);
+        this.router.navigate(['tipoCliente']);
       }
     });
   }
-
 }
+
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
+}
+

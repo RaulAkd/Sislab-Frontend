@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HOST2, TOKEN_AUTH_USERNAME, TOKEN_AUTH_PASSWORD, TOKEN_NAME } from '../_shared/var.constant';
+import { HOSTG, TOKEN_AUTH_USERNAME, TOKEN_AUTH_PASSWORD, TOKEN_NAME } from '../_shared/var.constant';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class LoginService {
 
   // url = 'http://localhost:8082/oauth/token';
-  url = `${HOST2}oauth/token`;
+  url = `${HOSTG}oauth/token`;
   constructor(private http: HttpClient, private router: Router) { }
   login(usuario: string, contrasena: string) {
     const body = `grant_type=password&username=${encodeURIComponent(usuario)}&password=${encodeURIComponent(contrasena)}`;

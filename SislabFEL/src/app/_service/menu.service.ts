@@ -15,6 +15,7 @@ export class MenuService {
   constructor(private http: HttpClient) { }
 
   listar() {
+    console.log('viene a mandar el bearer');
     // tslint:disable-next-line:prefer-const
     let access_token = JSON.parse(sessionStorage.getItem(TOKEN_NAME)).access_token;
     return this.http.get<Menu[]>(`${this.url}/menus`, {

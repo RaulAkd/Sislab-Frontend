@@ -162,7 +162,7 @@ export function tokenGetter() {
       config: {
         // tslint:disable-next-line:object-literal-shorthand
         tokenGetter: tokenGetter,
-        whitelistedDomains: ['localhost:8082'],
+        whitelistedDomains: ['localhost:8099'],
         // blacklistedRoutes: ['localhost:8082/login/enviarCorreo']
       }
     })
