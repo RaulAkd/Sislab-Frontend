@@ -27,8 +27,11 @@ export class LoginService {
   }
 
   cerrarSesion() {
-    sessionStorage.clear();
-    this.router.navigate(['login']);
+    // tslint:disable-next-line:prefer-const
+    let access_token = JSON.parse(sessionStorage.getItem(TOKEN_NAME)).access_token;
+    this.http.get(`${HOSTG}usuarios/anular/${access_token}`).subscribe(() => {
+      sessionStorage.clear();
+      this.router.navigate(['login']);
+    });
   }
-
 }

@@ -50,11 +50,16 @@ import { ProformaComponent } from './pages/proforma/proforma.component';
 import { ProformaEdicionComponent } from './pages/proforma/proforma-edicion/proforma-edicion.component';
 import { LoginComponent } from './pages/login/login.component';
 import { GuardService } from './_service/guard.service';
+import { Not403Component } from './pages/not403/not403.component';
 
 const routes: Routes = [
   {
     component: LoginComponent,
     path: 'login',
+  },
+  {
+    component: Not403Component,
+    path: 'notFound',
   },
   {
     path: '',
