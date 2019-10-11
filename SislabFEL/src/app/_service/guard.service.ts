@@ -31,31 +31,33 @@ export class GuardService implements CanActivate {
 
       if (!helper.isTokenExpired(token.access_token)) {
         const decodedToken = helper.decodeToken(token.access_token);
-        console.log(decodedToken);
+        // console.log(decodedToken);
         // tslint:disable-next-line:prefer-const
-        let url = state.url; // /plato
-        console.log('la url');
-        console.log(url);
-        /* return this.menuService.listarPorUsuario(decodedToken.user_name).pipe(map((data: Menu[]) => {
+        let url = state.url;
+        // console.log('la url');
+        // console.log(url);
+        return this.menuService.listarPorUsuario(decodedToken.user_name).pipe(map((data: Menu[]) => {
           this.menuService.menuCambio.next(data);
-
+          // console.log(data);
           let cont = 0;
           // tslint:disable-next-line:prefer-const
           for (let m of data) {
-            if (m.url === url) {
+            if (m.nombre === url) {
               cont++;
               break;
             }
           }
 
           if (cont > 0) {
+            console.log('Encontro');
             return true;
           } else {
-            this.router.navigate(['not-403']);
+            this.router.navigate(['notFound']);
             return false;
           }
-        }));*/
-        return true;
+          // return true;
+        }));
+        // return true;
       } else {
         sessionStorage.clear();
         this.router.navigate(['login']);
