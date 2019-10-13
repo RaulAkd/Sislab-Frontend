@@ -49,7 +49,6 @@ export class GuardService implements CanActivate {
           }
 
           if (cont > 0) {
-            console.log('Encontro');
             return true;
           } else {
             this.router.navigate(['notFound']);

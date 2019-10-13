@@ -27,6 +27,10 @@ import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/fo
     Validators.email,
   ]);
 
+  claveF = new FormControl('', [
+    Validators.required
+  ]);
+
   matcher = new MyErrorStateMatcher();
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
     const isSubmitted = form && form.submitted;
@@ -37,9 +41,20 @@ import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/fo
   ngOnInit() {
   }
 
+  errorF( uf: FormControl, cF: FormControl) {
+    if (uf.hasError('required') || uf.hasError('email') || cF.hasError('required')) {
+      console.log('Error campo');
+      return true;
+    } else {
+      console.log('Sin errores');
+      return false;
+    }
+  }
+
   iniciarSesion() {
     this.usuario = this.usuarioF.value;
     console.log(this.usuario);
+    this.clave = this.claveF.value;
     this.loginService.login(this.usuario, this.clave).subscribe(data => {
       if (data) {
         const helper = new JwtHelperService();
@@ -71,3 +86,10 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   }
 }
 
+
+/* export class InputErrorsExample {
+  emailFormControl = new FormControl('', [
+    Validators.required,
+    Validators.email,
+  ]);
+} */

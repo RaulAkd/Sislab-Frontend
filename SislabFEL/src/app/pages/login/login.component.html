@@ -31,17 +31,20 @@
       
           <div style="text-align: center">
               <mat-form-field class="example-full-width">
-                <input matInput [(ngModel)]="clave" placeholder="Ingrese su clave" [type] = "hide ? 'password' : 'text'">
+                <input matInput  [formControl]="claveF" placeholder="Ingrese su clave" [type] = "hide ? 'password' : 'text'">
                     <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                     </button>
+                    <mat-error *ngIf="claveF.hasError('required')">
+                        Campo <strong> obligatorio</strong>
+                    </mat-error>
               </mat-form-field>
               <div style="text-align: center">
                   <!-- <a routerLink="/recuperar">¿Olvidaste tu contraseña?</a> -->
               </div>
           </div>
           <div style="text-align: center">
-              <button  mat-raised-button color="primary" id="login" (click)="iniciarSesion()">Iniciar Sesión
+              <button  mat-raised-button [disabled]="errorF(usuarioF, claveF)" color="primary" id="login" (click)="iniciarSesion()">Iniciar Sesión
                   <i class="fa fa-sign-in" aria-hidden="true"></i>
               </button>
           </div>

@@ -1,3 +1,4 @@
+import { MenuTitulo } from './_model/menuTitulo';
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from './_service/login.service';
 import { Menu } from './_model/menu';
@@ -16,30 +17,42 @@ import { ActivatedRouteSnapshot, RouterStateSnapshot, CanActivate, Router } from
 
 export class AppComponent implements OnInit {
   title = 'SyslabFE';
-  numMenus = 3;
   menus: Menu[] = [];
-  constructor(private router: Router, public loginService: LoginService, private menuService: MenuService) {
+  micro1: MenuTitulo[] = [];
+  micro2: MenuTitulo[] = [];
+  micro3: MenuTitulo[] = [];
+  accesos1 = true;
+  accesos2 = true;
+  accesos3 = true;
+  // tslint:disable-next-line:max-line-length
+  constructor(private router: Router,  public loginService: LoginService, private menuService: MenuService) {
   }
 
   ngOnInit() {
     this.menuService.menuCambio.subscribe(data => {
       this.menus = data;
-    });
-
-    this.llenarMenu();
-  }
-
-  llenarMenu() {
-    const helper = new JwtHelperService();
-    // tslint:disable-next-line:prefer-const
-    let token = JSON.parse(sessionStorage.getItem(TOKEN_NAME));
-    const decodedToken = helper.decodeToken(token.access_token);
-    // tslint:disable-next-line:prefer-const
-    this.menuService.listarPorUsuario(decodedToken.user_name).pipe(map((data: Menu[]) => {
-      this.menuService.menuCambio.next(data);
-      console.log(data);
       // tslint:disable-next-line:prefer-const
-    }));
-  }
+      this.micro1 = [];
+      this.micro2 = [];
+      this.micro3 = [];
 
+      this.accesos1 = false;
+      this.accesos2 = false;
+      this.accesos3 = false;
+      // tslint:disable-next-line:prefer-for-of
+      for ( let i = 0; i < this.menus.length; i++) {
+        if (this.menus[i].url === 'Proformas') {
+          this.micro1.push({url: this.menus[i].nombre, titulo: this.menus[i].titulo});
+          this.accesos1 = true;
+        } else if (this.menus[i].url === 'Orden de Trabajo') {
+          // this.microservicio2.push(this.menus[i].titulo);
+          this.micro2.push({url: this.menus[i].nombre, titulo: this.menus[i].titulo});
+          this.accesos2 = true;
+        } else {
+          this.micro3.push({url: this.menus[i].nombre, titulo: this.menus[i].titulo});
+          this.accesos3 = true;
+        }
+      }
+    });
+  }
 }
