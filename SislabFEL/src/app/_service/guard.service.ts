@@ -3,16 +3,17 @@ import { ActivatedRouteSnapshot, RouterStateSnapshot, CanActivate, Router } from
 import { LoginService } from './login.service';
 import { MenuService } from './menu.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { TOKEN_NAME } from '../_shared/var.constant';
+import { TOKEN_NAME, HOSTG } from '../_shared/var.constant';
 import { map } from 'rxjs/operators';
 import { Menu } from '../_model/menu';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GuardService implements CanActivate {
 
-  constructor(private router: Router, private loginService: LoginService, private menuService: MenuService) { }
+  constructor(private http: HttpClient, private router: Router, private loginService: LoginService, private menuService: MenuService) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     const helper = new JwtHelperService();
@@ -42,7 +43,7 @@ export class GuardService implements CanActivate {
           let cont = 0;
           // tslint:disable-next-line:prefer-const
           for (let m of data) {
-            if (m.nombre === url) {
+            if (m.url === url) {
               cont++;
               break;
             }
@@ -58,9 +59,18 @@ export class GuardService implements CanActivate {
         }));
         // return true;
       } else {
-        sessionStorage.clear();
-        this.router.navigate(['login']);
-        return false;
+      // tslint:disable-next-line:prefer-const
+      /* let access_token = JSON.parse(sessionStorage.getItem(TOKEN_NAME)).access_token;
+      console.log(access_token);
+      this.http.get(`${HOSTG}usuarios/anular/${access_token}`).subscribe(() => {
+      sessionStorage.clear();
+      this.router.navigate(['login']);
+      return false;
+      }); */
+
+      sessionStorage.clear();
+      this.router.navigate(['login']);
+      return false;
       }
     }
   }

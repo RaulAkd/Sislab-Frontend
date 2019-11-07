@@ -17,9 +17,9 @@ export class TipoProductoComponent implements OnInit {
 
   dataSource: MatTableDataSource< TipoProducto >;
   // tslint:disable-next-line:max-line-length
-  displayedColumns = ['id_tipoprod', 'nombre_tprod', 'descr_tprod', 'acciones'];
+  displayedColumns = ['nombre_tprod', 'descr_tprod', 'acciones'];
   // tslint:disable-next-line:max-line-length
-  displayedColumnsData = ['id_tipoprod', 'nombre_tprod', 'descr_tprod', 'acciones'];
+  displayedColumnsData = ['nombre_tprod', 'descr_tprod', 'acciones'];
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   // tslint:disable-next-line:max-line-length

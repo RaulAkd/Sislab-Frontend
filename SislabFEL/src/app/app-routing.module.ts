@@ -51,6 +51,24 @@ import { ProformaEdicionComponent } from './pages/proforma/proforma-edicion/prof
 import { LoginComponent } from './pages/login/login.component';
 import { GuardService } from './_service/guard.service';
 import { Not403Component } from './pages/not403/not403.component';
+// tslint:disable-next-line:max-line-length
+import { TipoOrdenInventarioEdicionComponent } from './pages/tipo-orden-inventario/tipo-orden-inventario-edicion/tipo-orden-inventario-edicion.component';
+import { MuestraEdicionComponent } from './pages/muestra/muestra-edicion/muestra-edicion.component';
+import { MuestraComponent } from './pages/muestra/muestra.component';
+import { OrdenTrabajoComponent } from './pages/orden-trabajo/orden-trabajo.component';
+import { OrdenTrabajoEdicionComponent } from './pages/orden-trabajo/orden-trabajo-edicion/orden-trabajo-edicion.component';
+import { CompraComponent } from './pages/compra/compra.component';
+import { CompraEdicionComponent } from './pages/compra/compra-edicion/compra-edicion.component';
+import { HidratacionComponent } from './pages/hidratacion/hidratacion.component';
+import { HidratacionEdicionComponent } from './pages/hidratacion/hidratacion-edicion/hidratacion-edicion.component';
+import { MovimientosInventarioComponent } from './pages/movimientos-inventario/movimientos-inventario.component';
+// tslint:disable-next-line:max-line-length
+import { MovimientosInventarioEdicionComponent } from './pages/movimientos-inventario/movimientos-inventario-edicion/movimientos-inventario-edicion.component';
+import { ProveedorComponent } from './pages/proveedor/proveedor.component';
+import { ProveedorEdicionComponent } from './pages/proveedor/proveedor-edicion/proveedor-edicion.component';
+import { TipoJustificacionComponent } from './pages/tipo-justificacion/tipo-justificacion.component';
+// tslint:disable-next-line:max-line-length
+import { TipoJustificacionEdicionComponent } from './pages/tipo-justificacion/tipo-justificacion-edicion/tipo-justificacion-edicion.component';
 
 const routes: Routes = [
   {
@@ -185,7 +203,7 @@ const routes: Routes = [
       },
       {
         path: 'edicion/:id_cargo',
-        component: CargosPersonalComponent
+        component: CargosPersonalEdicionComponent
       }
     ]
   },
@@ -200,7 +218,7 @@ const routes: Routes = [
       },
       {
         path: 'edicion/:id_tipopersonal',
-        component: TipoPersonalComponent
+        component: TipoPersonalEdicionComponent
       }
     ]
   }
@@ -216,7 +234,37 @@ const routes: Routes = [
       },
       {
         path: 'edicion/:id_personal',
-        component: PersonalComponent
+        component: PersonalEdicionComponent
+      }
+    ]
+  },
+  {
+    component: MuestraComponent,
+    path: 'muestra',
+    canActivate: [GuardService],
+    children: [
+      {
+        path: 'nuevo',
+        component: MuestraEdicionComponent
+      },
+      {
+        path: 'edicion/:id_muestra',
+        component: MuestraEdicionComponent
+      }
+    ]
+  },
+  {
+    component: OrdenTrabajoComponent,
+    path: 'ordenTrabajo',
+    canActivate: [GuardService],
+    children: [
+      {
+        path: 'nuevo',
+        component: OrdenTrabajoEdicionComponent
+      },
+      {
+        path: 'edicion/:id_orden',
+        component: OrdenTrabajoEdicionComponent
       }
     ]
   },
@@ -415,8 +463,7 @@ const routes: Routes = [
         component: ProductoEdicionComponent
       }
     ]
-  }
-  ,
+  },
   {
     component: ProformaComponent,
     path: 'proforma',
@@ -429,6 +476,97 @@ const routes: Routes = [
       {
         path: 'edicion/:id_proforma',
         component: ProformaEdicionComponent
+      }
+    ]
+  },
+  {
+    component: ProformaComponent,
+    path: 'tipoOrdenInventario',
+    canActivate: [GuardService],
+    children: [
+      {
+        path: 'nuevo',
+        component: TipoOrdenInventarioEdicionComponent
+      },
+      {
+        path: 'edicion/:id_tipordeninv',
+        component: TipoOrdenInventarioEdicionComponent
+      }
+    ]
+  }
+  ,
+  {
+    component: CompraComponent,
+    path: 'compra',
+    canActivate: [GuardService],
+    children: [
+      {
+        path: 'nuevo',
+        component: CompraEdicionComponent
+      },
+      {
+        path: 'edicion/:id_compra',
+        component: CompraEdicionComponent
+      }
+    ]
+  },
+  {
+    component: HidratacionComponent,
+    path: 'hidratacion',
+    canActivate: [GuardService],
+    children: [
+      {
+        path: 'nuevo',
+        component: HidratacionEdicionComponent
+      },
+      {
+        path: 'edicion/:id_hidratacion',
+        component: HidratacionEdicionComponent
+      }
+    ]
+  },
+  {
+    component: MovimientosInventarioComponent,
+    path: 'movimientosInventario',
+    canActivate: [GuardService],
+    children: [
+      {
+        path: 'nuevo',
+        component: MovimientosInventarioEdicionComponent
+      },
+      {
+        path: 'edicion/:id_movimiento',
+        component: MovimientosInventarioEdicionComponent
+      }
+    ]
+  },
+  {
+    component: ProveedorComponent,
+    path: 'proveedor',
+    canActivate: [GuardService],
+    children: [
+      {
+        path: 'nuevo',
+        component: ProveedorEdicionComponent
+      },
+      {
+        path: 'edicion/:id_proveedor',
+        component: ProveedorEdicionComponent
+      }
+    ]
+  },
+  {
+    component: TipoJustificacionComponent,
+    path: 'tipoJustificacion',
+    canActivate: [GuardService],
+    children: [
+      {
+        path: 'nuevo',
+        component: TipoJustificacionEdicionComponent
+      },
+      {
+        path: 'edicion/:id_tipojust',
+        component: TipoJustificacionEdicionComponent
       }
     ]
   }

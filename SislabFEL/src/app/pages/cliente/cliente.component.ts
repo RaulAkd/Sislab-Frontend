@@ -9,6 +9,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar} from '@angular/material';
 import { ClienteEdicionComponent } from './cliente-edicion/cliente-edicion.component';
+import { ClienteMostrarComponent } from './cliente-mostrar/cliente-mostrar.component';
 
 @Component({
   selector: 'app-cliente',
@@ -19,9 +20,9 @@ export class ClienteComponent implements OnInit {
 
   dataSource: MatTableDataSource<Cliente>;
   // tslint:disable-next-line:max-line-length
-  displayedColumns = ['id_cliente', 'tipoCliente', 'nombre_cl', 'direccion_cl', 'cedula', 'ruc_cl', 'telefono_cl', 'otrofono_cl', 'celular_cl', 'fax_cl', 'email_cl', 'contacto_cl', 'nombre_usuario', 'fechatrans', 'pasaporte_cl', 'acciones'];
+  displayedColumns = ['nombre_cl', 'tipoCliente', 'cedula', 'ruc_cl', 'direccion_cl', 'acciones'];
   // tslint:disable-next-line:max-line-length
-  displayedColumnsData = ['id_cliente', 'tipoCliente', 'nombre_cl', 'direccion_cl', 'cedula', 'ruc_cl', 'telefono_cl', 'otrofono_cl', 'celular_cl', 'fax_cl', 'email_cl', 'contacto_cl', 'nombre_usuario', 'fechatrans', 'pasaporte_cl', 'acciones'];
+  displayedColumnsData = ['nombre_cl', 'tipoCliente', 'cedula',  'ruc_cl', 'direccion_cl', 'acciones'];
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   // tslint:disable-next-line:max-line-length
@@ -32,6 +33,10 @@ export class ClienteComponent implements OnInit {
     // tslint:disable-next-line:prefer-const
     let cli = cliente != null ? cliente : new Cliente();
     this.dialog.open(ClienteEdicionComponent, { data: cli});
+  }
+
+  mostrarCliente(cliente: Cliente) {
+    this.dialog.open(ClienteMostrarComponent, { data: cliente});
   }
 
   // tslint:disable-next-line:variable-name

@@ -41,15 +41,16 @@ export class AppComponent implements OnInit {
       this.accesos3 = false;
       // tslint:disable-next-line:prefer-for-of
       for ( let i = 0; i < this.menus.length; i++) {
-        if (this.menus[i].url === 'Proformas') {
-          this.micro1.push({url: this.menus[i].nombre, titulo: this.menus[i].titulo});
+        console.log(this.menus[i]);
+        if (this.menus[i].nombre === 'Proformas') {
+          this.micro1.push({url: this.menus[i].url, titulo: this.menus[i].titulo});
           this.accesos1 = true;
-        } else if (this.menus[i].url === 'Orden de Trabajo') {
+        } else if (this.menus[i].nombre === 'Orden de Trabajo') {
           // this.microservicio2.push(this.menus[i].titulo);
-          this.micro2.push({url: this.menus[i].nombre, titulo: this.menus[i].titulo});
+          this.micro2.push({url: this.menus[i].url, titulo: this.menus[i].titulo});
           this.accesos2 = true;
         } else {
-          this.micro3.push({url: this.menus[i].nombre, titulo: this.menus[i].titulo});
+          this.micro3.push({url: this.menus[i].url, titulo: this.menus[i].titulo});
           this.accesos3 = true;
         }
       }

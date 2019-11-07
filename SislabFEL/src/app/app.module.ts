@@ -61,6 +61,26 @@ import { ServerErrorsInterceptor } from './_shared/server-errors.interceptor';
 
 import { JwtModule } from '@auth0/angular-jwt';
 import { TOKEN_NAME } from './_shared/var.constant';
+import { TipoOrdenInventarioComponent } from './pages/tipo-orden-inventario/tipo-orden-inventario.component';
+// tslint:disable-next-line:max-line-length
+import { TipoOrdenInventarioEdicionComponent } from './pages/tipo-orden-inventario/tipo-orden-inventario-edicion/tipo-orden-inventario-edicion.component';
+import { ClienteMostrarComponent } from './pages/cliente/cliente-mostrar/cliente-mostrar.component';
+import { MuestraComponent } from './pages/muestra/muestra.component';
+import { MuestraEdicionComponent } from './pages/muestra/muestra-edicion/muestra-edicion.component';
+import { OrdenTrabajoComponent } from './pages/orden-trabajo/orden-trabajo.component';
+import { OrdenTrabajoEdicionComponent } from './pages/orden-trabajo/orden-trabajo-edicion/orden-trabajo-edicion.component';
+import { CompraComponent } from './pages/compra/compra.component';
+import { CompraEdicionComponent } from './pages/compra/compra-edicion/compra-edicion.component';
+import { HidratacionComponent } from './pages/hidratacion/hidratacion.component';
+import { HidratacionEdicionComponent } from './pages/hidratacion/hidratacion-edicion/hidratacion-edicion.component';
+import { MovimientosInventarioComponent } from './pages/movimientos-inventario/movimientos-inventario.component';
+// tslint:disable-next-line:max-line-length
+import { MovimientosInventarioEdicionComponent } from './pages/movimientos-inventario/movimientos-inventario-edicion/movimientos-inventario-edicion.component';
+import { ProveedorComponent } from './pages/proveedor/proveedor.component';
+import { ProveedorEdicionComponent } from './pages/proveedor/proveedor-edicion/proveedor-edicion.component';
+import { TipoJustificacionComponent } from './pages/tipo-justificacion/tipo-justificacion.component';
+// tslint:disable-next-line:max-line-length
+import { TipoJustificacionEdicionComponent } from './pages/tipo-justificacion/tipo-justificacion-edicion/tipo-justificacion-edicion.component';
 
 export function tokenGetter() {
   // tslint:disable-next-line:prefer-const
@@ -125,7 +145,24 @@ export function tokenGetter() {
     ProformaComponent,
     ProformaEdicionComponent,
     ProformaEdicionComponent,
-    LoginComponent
+    LoginComponent,
+    TipoOrdenInventarioComponent,
+    TipoOrdenInventarioEdicionComponent,
+    ClienteMostrarComponent,
+    MuestraComponent,
+    MuestraEdicionComponent,
+    OrdenTrabajoComponent,
+    OrdenTrabajoEdicionComponent,
+    CompraComponent,
+    CompraEdicionComponent,
+    HidratacionComponent,
+    HidratacionEdicionComponent,
+    MovimientosInventarioComponent,
+    MovimientosInventarioEdicionComponent,
+    ProveedorComponent,
+    ProveedorEdicionComponent,
+    TipoJustificacionComponent,
+    TipoJustificacionEdicionComponent
   ],
   entryComponents: [
     TipoClienteEdicionComponent,
@@ -149,7 +186,16 @@ export function tokenGetter() {
     BodegaEdicionComponent,
     CaracteristicaEdicionComponent,
     RiesgoEspecificoEdicionComponent,
-    ProductoEdicionComponent
+    ProductoEdicionComponent,
+    ClienteMostrarComponent,
+    CompraEdicionComponent,
+    HidratacionEdicionComponent,
+    MovimientosInventarioEdicionComponent,
+    MuestraEdicionComponent,
+    OrdenTrabajoEdicionComponent,
+    ProveedorEdicionComponent,
+    TipoJustificacionEdicionComponent,
+    TipoOrdenInventarioEdicionComponent
   ],
   imports: [
     BrowserModule,
