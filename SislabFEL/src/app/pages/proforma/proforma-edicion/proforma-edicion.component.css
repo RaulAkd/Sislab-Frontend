@@ -206,3 +206,7 @@ table {
 #subtotales {
     font-size: 2vh;
 }
+
+.ocultar {
+    display: none;
+}

@@ -12,6 +12,8 @@ import { MatSort } from '@angular/material/sort';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar} from '@angular/material';
 import { Laboratorio } from '../../../../_model/laboratorio';
 import { Metodo } from '../../../../_model/metodo';
+import { MetodoService } from '../../../../_service/metodo.service';
+import { MetodoComponent } from '../../../metodo/metodo.component';
 
 @Component({
   selector: 'app-agregar-detalle-proforma',
@@ -21,13 +23,8 @@ import { Metodo } from '../../../../_model/metodo';
 export class AgregarDetalleProformaComponent implements OnInit {
 
   detalleProforma: DetalleProforma;
-  nombreLaboratorio: string;
-  nombreServicio: '';
-  idServicio: string;
-  laboratorio: '';
-  precio: '';
-  cantidad: '';
-  totalServicio: '';
+  metodosPorServicio: Array<Metodo>;
+  selected: string;
   total: number;
   dataSource: MatTableDataSource<Servicio>;
   // tslint:disable-next-line:max-line-length
@@ -37,7 +34,7 @@ export class AgregarDetalleProformaComponent implements OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   // tslint:disable-next-line:max-line-length
-  constructor(private router: Router, private route: ActivatedRoute, private laboratorioService: LaboratorioService, private servicioService: ServicioService, private tipoServicioService: TipoServicioService, public dialog: MatDialog, private snackBar: MatSnackBar) { }
+  constructor(private router: Router, private route: ActivatedRoute, private laboratorioService: LaboratorioService, private metodoService: MetodoService, private servicioService: ServicioService, private tipoServicioService: TipoServicioService, public dialog: MatDialog, private snackBar: MatSnackBar) { }
 
   // tslint:disable-next-line:variable-name
   notificar(mensaje: string, accion: string) {
@@ -81,10 +78,13 @@ export class AgregarDetalleProformaComponent implements OnInit {
     this.detalleProforma.id_laboratorio = row.id_laboratorio;
     this.detalleProforma.nombreLaboratorio = row.nombreLaboratorio;
     this.detalleProforma.valorunitario_po = row.precio_s;
-    this.detalleProforma.metodo.id_metodo = '1';
-    this.laboratorioService.listarLaboratorioPorId(this.detalleProforma.id_laboratorio).subscribe( data => {
-      console.log(data);
-      this.nombreLaboratorio = data.nombre_l;
+    this.metodosPorServicio = new Array();
+    this.metodoService.listarMetodo().subscribe( data => {
+      data.forEach(element => {
+        if ( element.servicio.id_servicio === this.detalleProforma.servicio.id_servicio) {
+          this.metodosPorServicio.push(element);
+        }
+      });
     });
   }
 

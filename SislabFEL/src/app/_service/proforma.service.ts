@@ -19,6 +19,11 @@ export class ProformaService {
     return this.http.get<Proforma[]>(this.url);
   }
 
+  // tslint:disable-next-line:variable-name
+  listarProformaPorId(id_proforma: string) {
+    return this.http.get<Proforma>(`${this.url}/${id_proforma}`);
+  }
+
   registrarProforma(proforma: Proforma) {
     return this.http.post( this.url, proforma);
   }

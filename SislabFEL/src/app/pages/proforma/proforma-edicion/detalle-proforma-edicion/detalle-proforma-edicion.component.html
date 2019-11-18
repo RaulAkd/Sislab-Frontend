@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>Editar Detalle Proforma</h1>
+<div mat-dialog-content>
+    <mat-toolbar>
+        <mat-toolbar-row>
+            <span>Servicio:</span>
+            <span class="fill"></span>
+            <span>
+                <mat-form-field>
+                    <input matInput [(ngModel)]="data.servicio.nombre_s">
+                </mat-form-field>
+            </span>
+        </mat-toolbar-row>
+    </mat-toolbar>
+</div>
+<div mat-dialog-actions>
+        <button mat-button cdkFocusInitial [mat-dialog-close] = "detalleProforma">Confirmar</button>
+        <button mat-button mat-dialog-close="false">Cancelar</button>
+</div>

@@ -19,10 +19,10 @@ export class LaboratorioService {
     return this.http.get<Laboratorio[]>(this.url);
   }
 
-    // tslint:disable-next-line:variable-name
-    listarLaboratorioPorId(id_laboratorio: string) {
-      return this.http.get<Laboratorio>(`${this.url}/${id_laboratorio}`);
-    }
+  // tslint:disable-next-line:variable-name
+  listarLaboratorioPorId(id_laboratorio: string) {
+    return this.http.get<Laboratorio>(`${this.url}/${id_laboratorio}`);
+  }
 
   registrarLaboratorio(laboratorio: Laboratorio) {
     return this.http.post( this.url, laboratorio);

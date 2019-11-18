@@ -12,7 +12,7 @@ export class Proforma {
     // tslint:disable-next-line:variable-name
     total_po: number;
     // tslint:disable-next-line:variable-name
-    fecha: Date;
+    fecha: string;
     // tslint:disable-next-line:variable-name
     estado_po: string;
     // tslint:disable-next-line:variable-name

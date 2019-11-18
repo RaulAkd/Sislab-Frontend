@@ -4,12 +4,13 @@ import { AgregarDetalleProformaComponent } from './agregar-detalle-proforma/agre
 import { Cliente } from './../../../_model/cliente';
 import { ListaClienteComponent } from './../../cliente/lista-cliente/lista-cliente.component';
 import { ClienteComponent } from './../../cliente/cliente.component';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog, MatDialogRef, MatTableDataSource, MatPaginator, MatSort, MatSnackBar } from '@angular/material';
+import { Component, OnInit, ViewChild, Inject } from '@angular/core';
+import { MatDialog, MatDialogRef, MatTableDataSource, MatPaginator, MatSort, MatSnackBar, MAT_DIALOG_DATA } from '@angular/material';
 import { TipoCliente } from '../../../_model/tipoCliente';
 import { Proforma } from '../../../_model/proforma';
 import { ProformaService } from '../../../_service/proforma.service';
 import { Router } from '@angular/router';
+import { DetalleProformaEdicionComponent } from './detalle-proforma-edicion/detalle-proforma-edicion.component';
 
 @Component({
   selector: 'app-proforma-edicion',
@@ -28,6 +29,7 @@ export class ProformaEdicionComponent implements OnInit {
   cedulaCliente: string;
   subtotal = 0;
   subtotalIva = 0;
+  nuevaProforma = true;
 
   dataSource: MatTableDataSource<DetalleProforma>;
 
@@ -38,9 +40,8 @@ export class ProformaEdicionComponent implements OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
-
   // tslint:disable-next-line:max-line-length
-  constructor(private dialogRef: MatDialogRef<ListaClienteComponent>, public dialog: MatDialog, private proformaService: ProformaService, private router: Router, private snackBar: MatSnackBar) { }
+  constructor(private dialogRef: MatDialogRef<ListaClienteComponent>, @Inject(MAT_DIALOG_DATA) public data: Proforma, public dialog: MatDialog, private proformaService: ProformaService, private router: Router, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.detalleProforma = new DetalleProforma();
@@ -49,10 +50,33 @@ export class ProformaEdicionComponent implements OnInit {
     this.cliente.tipoCliente = new TipoCliente();
     this.proforma = new Proforma();
     this.proforma.cliente = new Cliente();
-    this.dataSource = new MatTableDataSource(this.dataDetalleProforma);
-    // this.dataSource = new MatTableDataSource(this.dataDetalleProforma);
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+//    this.dataSource = new MatTableDataSource(this.dataDetalleProforma);
+//    this.dataSource = new MatTableDataSource(this.dataDetalleProforma);
+//    this.dataSource.paginator = this.paginator;
+//    this.dataSource.sort = this.sort;
+    if (!this.data.id_proforma) {
+      // nueva proforma
+      this.dataSource = new MatTableDataSource(this.dataDetalleProforma);
+      // this.dataSource = new MatTableDataSource(this.dataDetalleProforma);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    } else {
+      this.nuevaProforma = false;
+      console.log('editar');
+      // editar proforma
+      this.proformaService.listarProformaPorId(this.data.id_proforma).subscribe( data => {
+        console.log(data);
+        this.cliente.nombre_cl = data.cliente.id_cliente;
+        this.cliente.direccion_cl = data.cliente.direccion_cl;
+        this.cliente.telefono_cl = data.cliente.telefono_cl;
+        this.proforma.fecha = new Date(data.fecha).toISOString().slice(0, 10);
+        this.cliente.ruc_cl = data.cliente.ruc_cl;
+        this.cliente.cedula = data.cliente.cedula;
+        this.dataSource = new MatTableDataSource(this.data.detalleProforma);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      });
+    }
   }
 
   buscarCliente(parametro?: string) {
@@ -82,16 +106,9 @@ export class ProformaEdicionComponent implements OnInit {
       this.dataSource = new MatTableDataSource(this.dataDetalleProforma);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      console.log('empieza subtotal');
       this.subtotal = this.subtotal + +result.totalservicio_po;
-      console.log(this.subtotal);
       this.subtotalIva = (this.subtotal * this.cliente.tipoCliente.iva_tcl) / 100;
-      console.log('totallllllll');
       this.proforma.total_po = this.subtotal + this.subtotalIva;
-      // this.detalleProforma.totalservicio_po = this.subtotal + this.subtotalIva;
-      console.log(this.proforma.total_po);
-      console.log('subtotal');
-      console.log(this.subtotal);
       this.errorProforma = false;
     });
   }
@@ -120,12 +137,20 @@ export class ProformaEdicionComponent implements OnInit {
       }
   }
 
+  editarDetalleProforma(row: any) {
+    const dialogRef = this.dialog.open(DetalleProformaEdicionComponent, { data: row});
+    dialogRef.afterClosed().subscribe(result => {
+
+    });
+  }
+
   guardarProforma() {
     this.proforma.cliente.id_cliente = this.cliente.id_cliente;
     this.proforma.subtotal_po = this.subtotal;
     this.proforma.iva_po = this.subtotalIva;
     // this.proforma.total_po = this.detalleProforma.totalservicio_po;
     this.proforma.estado_po = 'Pendiente';
+    this.proforma.fecha = new Date().toISOString().slice(0, 10);
     this.proforma.detalleProforma = this.dataDetalleProforma;
     console.log('Proforma a guardar');
     console.log(this.proforma);

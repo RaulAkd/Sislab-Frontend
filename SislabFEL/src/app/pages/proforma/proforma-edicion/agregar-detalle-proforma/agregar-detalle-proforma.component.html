@@ -91,17 +91,32 @@
                             <span id="valorS">{{detalleProforma.servicio.nombre_s}}</span>
                             
                         </mat-toolbar-row>
-                        <mat-toolbar-row>
+                        <!--<mat-toolbar-row>
                             <span><h5 id="tituloS">ID Laboratorio:</h5></span>
                             <span class="fill"></span>
                             <span id="valorS">{{detalleProforma.id_laboratorio}}</span>
                         
-                        </mat-toolbar-row>
+                        </mat-toolbar-row> -->
+
                         <mat-toolbar-row>
                             <span><h5 id="tituloS">Laboratorio:</h5></span>
                             <span class="fill"></span>
                             <span id="valorS">{{detalleProforma.nombreLaboratorio}}</span>
                         
+                        </mat-toolbar-row>
+
+                        <mat-toolbar-row>
+                            <span><h5 id="tituloS">Metodo:</h5></span>
+                            <span class="fill"></span>
+                            <span>
+                                <mat-form-field class="example-full-width">
+                                    <mat-select placeholder="seleccionar" [(value)]="detalleProforma.metodo.id_metodo">
+                                        <mat-option *ngFor="let m of metodosPorServicio" [value]="m.id_metodo">
+                                            {{m.id_metodo}} - {{m.nombre_mt}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>    
+                            </span>                            
                         </mat-toolbar-row>
 
                         <mat-toolbar-row>
@@ -119,15 +134,14 @@
                                     <input id="entrada" matInput [(ngModel)]="detalleProforma.cantidad_po">
                                 </mat-form-field>
                             </span>
-                            </mat-toolbar-row>
-
-                            <mat-toolbar-row>
-                                <!--<span><h5 id="tituloS">Total:</h5></span> -->
-                                <span><button mat-button (click) = 'calcular(detalleProforma.cantidad_po)'>Calcular Total</button></span>
-                                <span class="fill"></span>
-                                <span id="valorS">{{detalleProforma.totalservicio_po}}</span>
-                            </mat-toolbar-row>
-                                    
+                        </mat-toolbar-row>
+                                                                        
+                        <mat-toolbar-row>
+                            <!--<span><h5 id="tituloS">Total:</h5></span> -->
+                            <span><button mat-button (click) = 'calcular(detalleProforma.cantidad_po)'>Calcular Total</button></span>
+                            <span class="fill"></span>
+                            <span id="valorS">{{detalleProforma.totalservicio_po}}</span>
+                        </mat-toolbar-row>                        
                     </mat-toolbar>
                 </div>
             </mat-drawer-content>

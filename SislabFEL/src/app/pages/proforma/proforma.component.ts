@@ -65,6 +65,11 @@ export class ProformaComponent implements OnInit {
       this.dataSource.sort = this.sort;
     });
     this.proformaService.listarProforma().subscribe( data => {
+      data.forEach(element => {
+        if (element.fecha != null) {
+          element.fecha = new Date(element.fecha).toISOString().slice(0, 10);
+        }
+      });
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
