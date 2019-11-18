@@ -18,9 +18,14 @@ export class ProformaComponent implements OnInit {
 
   dataSource: MatTableDataSource<Proforma>;
   // tslint:disable-next-line:max-line-length
-  displayedColumns = ['id_proforma', 'cliente', 'subtotal_po', 'iva_po', 'total_po', 'fecha', 'estado_po', 'auxid_proforma', 'representante_po', 'obser_po', 'motivo_estadopo', 'id_usuario', 'fecha_ptarjeta', 'codigo_autoriza', 'id_emisor', 'tarjeta', 'obser_trj', 'codigo_resultado', 'codigo_operacion', 'codigo_plam', 'codigo_cuota', 'procesoweb_po', 'acciones'];
+  displayedColumns = ['id_proforma', 'cliente', 'subtotal_po', 'iva_po', 'total_po', 'estado_po', 'acciones'];
   // tslint:disable-next-line:max-line-length
-  displayedColumnsData = ['id_proforma', 'cliente', 'subtotal_po', 'iva_po', 'total_po', 'fecha', 'estado_po', 'auxid_proforma', 'representante_po', 'obser_po', 'motivo_estadopo', 'id_usuario', 'fecha_ptarjeta', 'codigo_autoriza', 'id_emisor', 'tarjeta', 'obser_trj', 'codigo_resultado', 'codigo_operacion', 'codigo_plam', 'codigo_cuota', 'procesoweb_po', 'acciones'];
+  displayedColumnsData = ['id_proforma', 'cliente', 'subtotal_po', 'iva_po', 'total_po', 'estado_po', 'acciones'];
+  // tslint:disable-next-line:max-line-length
+  // displayedColumns = ['id_proforma', 'cliente', 'subtotal_po', 'iva_po', 'total_po', 'fecha', 'estado_po', 'auxid_proforma', 'representante_po', 'obser_po', 'motivo_estadopo', 'id_usuario', 'fecha_ptarjeta', 'codigo_autoriza', 'id_emisor', 'tarjeta', 'obser_trj', 'codigo_resultado', 'codigo_operacion', 'codigo_plam', 'codigo_cuota', 'procesoweb_po', 'acciones'];
+  // tslint:disable-next-line:max-line-length
+  // displayedColumnsData = ['id_proforma', 'cliente', 'subtotal_po', 'iva_po', 'total_po', 'fecha', 'estado_po', 'auxid_proforma', 'representante_po', 'obser_po', 'motivo_estadopo', 'id_usuario', 'fecha_ptarjeta', 'codigo_autoriza', 'id_emisor', 'tarjeta', 'obser_trj', 'codigo_resultado', 'codigo_operacion', 'codigo_plam', 'codigo_cuota', 'procesoweb_po', 'acciones'];
+
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   // tslint:disable-next-line:max-line-length
@@ -36,7 +41,7 @@ export class ProformaComponent implements OnInit {
   }
 
   // tslint:disable-next-line:variable-name
-  eliminarMetodo(id_proforma: string) {
+  eliminarProforma(id_proforma: string) {
     console.log('Eliminar');
     console.log(id_proforma);
     this.proformaService.eliminarProforma(id_proforma).subscribe(data => {
@@ -64,6 +69,14 @@ export class ProformaComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
+  }
+
+  editarProforma() {
+
+  }
+
+  eliminarDetalleProforma() {
+
   }
 
   applyFilter(filterValue: string) {

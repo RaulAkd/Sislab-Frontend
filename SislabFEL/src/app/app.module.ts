@@ -81,6 +81,9 @@ import { ProveedorEdicionComponent } from './pages/proveedor/proveedor-edicion/p
 import { TipoJustificacionComponent } from './pages/tipo-justificacion/tipo-justificacion.component';
 // tslint:disable-next-line:max-line-length
 import { TipoJustificacionEdicionComponent } from './pages/tipo-justificacion/tipo-justificacion-edicion/tipo-justificacion-edicion.component';
+import { ListaClienteComponent } from './pages/cliente/lista-cliente/lista-cliente.component';
+// tslint:disable-next-line:max-line-length
+import { AgregarDetalleProformaComponent } from './pages/proforma/proforma-edicion/agregar-detalle-proforma/agregar-detalle-proforma.component';
 
 export function tokenGetter() {
   // tslint:disable-next-line:prefer-const
@@ -162,7 +165,9 @@ export function tokenGetter() {
     ProveedorComponent,
     ProveedorEdicionComponent,
     TipoJustificacionComponent,
-    TipoJustificacionEdicionComponent
+    TipoJustificacionEdicionComponent,
+    ListaClienteComponent,
+    AgregarDetalleProformaComponent
   ],
   entryComponents: [
     TipoClienteEdicionComponent,
@@ -195,7 +200,10 @@ export function tokenGetter() {
     OrdenTrabajoEdicionComponent,
     ProveedorEdicionComponent,
     TipoJustificacionEdicionComponent,
-    TipoOrdenInventarioEdicionComponent
+    TipoOrdenInventarioEdicionComponent,
+    ClienteComponent,
+    ListaClienteComponent,
+    AgregarDetalleProformaComponent
   ],
   imports: [
     BrowserModule,

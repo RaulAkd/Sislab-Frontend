@@ -18,5 +18,7 @@ export class DetalleProforma {
     // tslint:disable-next-line:variable-name
     totalservicio_po: number;
     // tslint:disable-next-line:variable-name
-    id_laboratorio: number;
+    id_laboratorio: string;
+    // tslint:disable-next-line:variable-name
+    nombreLaboratorio: string;
 }

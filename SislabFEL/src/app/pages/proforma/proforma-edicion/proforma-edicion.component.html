@@ -1,1 +1,169 @@
-<p>proforma-edicion works!</p>
+<h1 mat-dialog-title>Ingresar Proforma</h1>
+<div mat-dialog-content>
+    <div class="containerToolbar" >
+        <mat-toolbar id="toolbarPrincipal">
+            <mat-toolbar-row>
+                <span>
+                    <img id = "img1" src="../assets/Escudo_de_la_Escuela_Politécnica_Nacional.png" alt="">
+                </span>            
+                <span id="spanTitulo">
+                    <h1 id="titulo1">ESCUELA POLITÉCNICA NACIONAL</h1>
+                    <h2 id="titulo2">Campus Politécnico J. Rubén Orellana R </h2>
+                    <h2 id="titulo3">Ladrón de Guevara E11-253 y Andalucía </h2>
+                    <h2 id="titulo4">Telf.: (+593) 22976300 - info@epn.edu.ec  </h2>
+                </span>
+            </mat-toolbar-row>        
+        </mat-toolbar>
+    </div>        
+    <div class="containerBuscarCliente">
+        <mat-toolbar-row>
+            <span class="fill"></span>
+            <span id="buscar">
+                    <button mat-raised-button color="primary" (click)= "buscarCliente()" id="botonBuscar">
+                            <mat-icon>search</mat-icon>Buscar Clientes
+                    </button>
+            </span>
+            <span class="fill"></span>
+        </mat-toolbar-row>
+    </div>
+    <div class="containerCliente" *ngIf="consultaCliente()">
+        <mat-toolbar>
+            <mat-toolbar-row>
+                <span><h5 id="titulosCl">Cliente:</h5></span>
+                <span class="fill"></span>
+                <span id="valorCl">{{cliente.nombre_cl}}</span>
+                <span class="fill"></span>
+                <span><h5 id="titulosCl">Direccion:</h5></span>
+                <span class="fill"></span>
+                <span id="valorCl">{{cliente.direccion_cl}}</span>
+                <span class="fill"></span>
+                <span><h5 id="titulosCl">Telefono:</h5></span>
+                <span class="fill"></span>
+                <span id="valorCl">{{cliente.telefono_cl}}</span>
+                <span class="fill"></span>  
+            </mat-toolbar-row>
+            <mat-toolbar-row>
+                <span><h5 id="titulosCl">Fecha:</h5></span>
+                <span class="fill"></span>
+                <span id="valorCl">{{cliente.fechatrans}}</span>
+                <span class="fill"></span>
+                <span><h5 id="titulosCl">RUC:</h5></span>
+                <span class="fill"></span>
+                <span id="valorCl">{{cliente.ruc_cl}}</span>
+                <span class="fill"></span>
+                <span><h5 id="titulosCl">CI:</h5></span>
+                <span class="fill"></span>
+                <span id="valorCl">{{cliente.cedula}}</span>
+                <span class="fill"></span>                                
+            </mat-toolbar-row>
+        </mat-toolbar>
+    </div>
+    <div class="containerButton">
+        <mat-toolbar>
+            <mat-toolbar-row>
+                <span class="fill"></span>
+                <span>
+                    <button mat-raised-button [disabled]="ingresoCliente()" color="primary" (click)= "agregarDetalle()" id="botonNuevo">
+                        <mat-icon>add</mat-icon>Agregar
+                    </button>
+                </span>
+                <span class="fill"></span>
+            </mat-toolbar-row>
+        </mat-toolbar>
+    </div>
+    <div class="containerDetalleProforma">
+        <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource" matSort>
+            <!-- ID Column -->
+            <ng-container matColumnDef="id_detallepo">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+                    <td mat-cell *matCellDef="let row"> {{row.servicio.id_servicio}} </td>
+                </ng-container>
+    
+                <!-- Servicio Column -->
+                <ng-container matColumnDef="servicio">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Servicio </th>
+                    <td mat-cell *matCellDef="let row"> {{row.servicio.nombre_s}} </td>
+                </ng-container> 
+    
+                <!-- Metodo Column 
+                <ng-container matColumnDef="metodo">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Metodo </th>
+                        <td mat-cell *matCellDef="let row"> {{row.metodo.descr_mt}} </td>
+                </ng-container> -->
+    
+                <!-- Laboratorio Column -->
+                <ng-container matColumnDef="nombreLaboratorio">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Unidad/Laboratorio </th>
+                        <td mat-cell *matCellDef="let row"> {{row.nombreLaboratorio}} </td>
+                </ng-container>
+    
+                <!-- Cantidad Column -->
+                <ng-container matColumnDef="cantidad_po">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Cant </th>
+                    <td mat-cell *matCellDef="let row"> {{row.cantidad_po}} </td>
+                </ng-container>
+    
+                <!-- Valor Unitario Column -->
+                <ng-container matColumnDef="valorunitario_po">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> V.U. </th>
+                    <td mat-cell *matCellDef="let row"> {{row.valorunitario_po}} </td>
+                </ng-container>
+                          
+                <!-- Total Servicio Column -->
+                <ng-container matColumnDef="totalservicio_po">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> T.S. </th>
+                    <td mat-cell *matCellDef="let row"> {{row.totalservicio_po}} </td>
+                </ng-container>      
+                <!-- Acciones Column -->
+                <ng-container matColumnDef="acciones">
+                    <th mat-header-cell *matHeaderCellDef> Acciones </th>
+                    <!-- <td mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.color}} </td> -->
+                    <td mat-cell *matCellDef="let row">
+                        <button mat-icon-button color="primary" (click)="editarProforma(row)">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                        <button mat-icon-button color="accent" (click)="eliminarDetalleProforma(row.iddetalle_po)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+                                      
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row  *matRowDef="let row; columns: displayedColumnsData;">
+                </tr>
+            </table>
+            <!-- <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator> -->
+            <div>
+                <mat-toolbar>
+                    <mat-toolbar-row>
+                        <span class="fill"></span>
+                        <span id="subtotales">Subtotal:</span>
+                        <span id="subtotales">{{subtotal}}</span>
+                    </mat-toolbar-row>
+
+                    <mat-toolbar-row>
+                        <span class="fill"></span>
+                        <span id="subtotales">Iva: ({{cliente.tipoCliente.iva_tcl}}%)</span>
+                        <span id="subtotales">{{subtotalIva}}</span>
+                    </mat-toolbar-row>
+
+                    <mat-toolbar-row>
+                        <span class="fill"></span>
+                        <span id="subtotales">Total:</span>
+                        <span id="subtotales">{{proforma.total_po}}</span>
+                    </mat-toolbar-row>
+                </mat-toolbar>
+            </div>
+        </div>            
+    </div>
+    <div class="containerObservacion">
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Observación" [(ngModel)]="proforma.obser_po">
+        </mat-form-field>    
+    </div>
+</div> 
+<div mat-dialog-actions>
+    <button mat-button cdkFocusInitial [disabled]="ingresoDatos()" (click)= "guardarProforma()" >Confirmar</button>
+    <button mat-button mat-dialog-close="false">Cancelar</button>
+</div>

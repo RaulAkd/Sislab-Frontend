@@ -19,3 +19,7 @@ table {
       position: relative;
       margin-left: 45%;
   }
+
+  .resaltar {
+    background-color:silver;
+  }

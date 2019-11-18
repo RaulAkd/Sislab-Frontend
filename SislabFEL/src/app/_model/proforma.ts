@@ -1,4 +1,5 @@
 import { Cliente } from './cliente';
+import { DetalleProforma } from './detalle-proforma';
 export class Proforma {
     // tslint:disable-next-line:variable-name
     id_proforma: string;
@@ -44,4 +45,6 @@ export class Proforma {
     codigo_cuota: string;
     // tslint:disable-next-line:variable-name
     procesoweb_po: string;
+    // tslint:disable-next-line:variable-name
+    detalleProforma: DetalleProforma[];
 }

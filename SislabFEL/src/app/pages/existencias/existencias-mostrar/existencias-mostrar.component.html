@@ -184,7 +184,7 @@
                         </ng-container>
                                   
                         <tr mat-header-row *matHeaderRowDef="displayedColumns" ></tr>
-                        <tr mat-row  *matRowDef="let row; columns: displayedColumnsData;" (click)="mensaje(row)">
+                        <tr mat-row [ngClass]="{'resaltar': selectedRowIndex === row.id_existencia}" *matRowDef="let row; columns: displayedColumnsData;" (click)="seleccion(row)">
                         </tr>
                     </table>
                     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>

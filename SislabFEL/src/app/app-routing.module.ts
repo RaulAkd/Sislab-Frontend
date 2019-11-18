@@ -69,6 +69,7 @@ import { ProveedorEdicionComponent } from './pages/proveedor/proveedor-edicion/p
 import { TipoJustificacionComponent } from './pages/tipo-justificacion/tipo-justificacion.component';
 // tslint:disable-next-line:max-line-length
 import { TipoJustificacionEdicionComponent } from './pages/tipo-justificacion/tipo-justificacion-edicion/tipo-justificacion-edicion.component';
+import { TipoOrdenInventarioComponent } from './pages/tipo-orden-inventario/tipo-orden-inventario.component';
 
 const routes: Routes = [
   {
@@ -480,7 +481,7 @@ const routes: Routes = [
     ]
   },
   {
-    component: ProformaComponent,
+    component: TipoOrdenInventarioComponent,
     path: 'tipoOrdenInventario',
     canActivate: [GuardService],
     children: [

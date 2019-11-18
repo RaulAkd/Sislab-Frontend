@@ -1,0 +1,208 @@
+.container{
+    /*padding: 20px;*/
+    /*background-color: rgba(66, 103, 178, 1);*/
+    background-color: white;
+    margin-top: 10px;
+    margin-left: 40px;
+    margin-right: 40px;
+    padding-bottom: 2px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+}
+#myContainer{
+    background-color: rgba(210, 210, 210, 0.5);
+    padding: 10px;
+}
+
+
+.containerToolbar{
+    /* background-color: aquamarine; */
+    border-radius: 20px;
+    width: 124vh;
+    /* padding: 1vh; */
+}
+
+.fill{
+    flex: 1 1 auto;
+}
+
+#img1{
+ width: 5vmax;
+}
+
+#titulo1{
+    color: rgba(11, 28, 75, 1);
+    line-height: 120%;
+    font-size: 1.3vw;
+    padding-left: 48%;
+}
+
+#titulo2{
+    color: rgba(154, 54, 4, 1);
+    line-height: 100%;
+    font-size: 1vw;
+    padding-left: 55%;
+}
+
+#titulo3{
+    color: rgba(154, 54, 4, 1);
+    line-height: 100%;
+    font-size: 1vw;
+    padding-left: 56%;
+}
+
+#titulo4{
+    color: rgba(154, 54, 4, 1);
+    line-height: 100%;
+    font-size: 1vw;
+    padding-left: 54%;
+}
+
+#toolbarPrincipal{
+    padding: 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+#cardSesion{
+    padding-right: 1px;
+  /*  margin-top:8vh;*/
+    height: 80%;
+    width: 100%;
+    margin-right: 1vh;
+    font-size: 2.4vh;
+    line-height: 1vh;
+   /* max-height: 20vh;
+    min-height: 20vh;*/
+}
+
+#buttonCerrarSesion{
+     font-size: 2.4vh;
+    text-align: center;
+    padding-top: 2px;
+
+}
+
+#spanLeft{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.container3{
+    padding: 2px;
+}
+
+.example-container {
+    margin: 10px;
+    /*border: 1px solid #555;*/
+    height: 400vh;
+  }
+  
+  #side{
+      text-align: center;
+      padding: 3px;
+      width: 20%;
+      color: white;
+      background-color: rgba(14, 34, 64, 1);
+      border-top-left-radius: 10px;
+      border-right-color: white;
+      font-size: 3vh;
+  }
+
+  #acordion{
+    background-color: red;
+  }
+
+  .container3 a {
+    float: left;
+    /* color: rgba(240, 240, 240, 1);  */
+    color: rgba(205, 211, 215, 1); 
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .container3 a:hover {
+    color: white;
+    font-size: 2.6vh;
+  }
+
+  #tituloCliente {
+      font-size: 2vh;
+      text-align: center;
+  }
+
+  #spanCliente {
+    padding-left: 18%;
+    font-size: 2vh;
+  }
+
+  #buscar {
+   padding-left: 2%;
+  }
+
+.containerBuscarCliente {
+    padding-top: 2%;
+    padding-bottom: 2%;
+}  
+
+.mat-dialog-actions {
+    padding-left: 38%;
+}
+
+.containerCliente {
+  font-size: 2vh;
+}
+
+.tileT {
+    text-align: justify;
+}
+
+.fill{
+    flex: 1 1;
+}
+
+#titulosCl {
+    color: brown;
+    font-size: 2vh;
+}
+
+#valorCl {
+    font-size: 2vh;
+}
+
+.mat-dialog-title {
+    font-size: 2.5vh;
+}
+
+.containerButton {
+    padding-top: 2%;
+    background-color: white;
+}
+
+.mat-toolbar-row {
+    height: 5vh;
+}
+
+
+.example-container {
+    margin: 10px;
+    /*border: 1px solid #555;*/
+    height: 50vh;
+}
+
+table {
+    width: 100%;
+}
+
+.containerDetallaProforma {
+    padding: 2%;
+}
+
+.example-full-width {
+    width: 100%;
+  }
+
+#subtotales {
+    font-size: 2vh;
+}

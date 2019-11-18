@@ -26,7 +26,9 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar} from '@angular/ma
 })
 export class ExistenciasMostrarComponent implements OnInit {
 
+  selectedRowIndex = -1;
   datos: 'Hola';
+  selected = false;
   dataSource: MatTableDataSource<Existencias>;
   // tslint:disable-next-line:max-line-length
   displayedColumns = ['id_existencias', 'id_unidad', 'producto', 'bodega', 'presentacion', 'unidadMedida', 'estadoProducto', 'grado', 'hidratacion', 'posgiro', 'cantidad_e', 'fechacad_e', 'obsolescencia_e', 'tasauso_e', 'nenvase_e', 'fechabaja_e', 'ubica_e', 'pureza_e', 'concentracion', 'caracteristica', 'cantidadneta_e', 'tipoProducto', 'dism', 'increm', 'aux1', 'aux2', 'toi'];
@@ -84,9 +86,13 @@ export class ExistenciasMostrarComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
-  mensaje(row: any) {
+  seleccion(row: any) {
     console.log('Mensajeeeeeee');
     console.log(row);
     this.datos = row;
+    this.selectedRowIndex = row.id_existencia;
+    console.log('Indice');
+    console.log(this.selectedRowIndex);
+    this.selected = true;
   }
 }

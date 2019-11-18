@@ -16,4 +16,6 @@ export class Servicio {
     precio_s: number;
     // tslint:disable-next-line:variable-name
     acreditado: string;
+    // tslint:disable-next-line:variable-name
+    nombreLaboratorio: string;
 }

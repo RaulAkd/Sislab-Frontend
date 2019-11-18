@@ -1,3 +1,4 @@
+import { LaboratorioService } from './../../_service/laboratorio.service';
 import { Servicio } from './../../_model/servicio';
 import { TipoServicio } from './../../_model/tipoServicio';
 import { Routes, RouterEvent, RouterLink, Router, ActivatedRoute, Params } from '@angular/router';
@@ -19,13 +20,13 @@ export class ServicioComponent implements OnInit {
 
   dataSource: MatTableDataSource<Servicio>;
   // tslint:disable-next-line:max-line-length
-  displayedColumns = ['id_servicio', 'id_laboratorio', 'tipoServicio', 'nombre_s', 'descr_s', 'aux_id_servicio', 'precio_s', 'acreditado', 'acciones'];
+  displayedColumns = ['id_servicio', 'id_laboratorio', 'nombreLaboratorio', 'tipoServicio', 'nombre_s', 'descr_s', 'aux_id_servicio', 'precio_s', 'acreditado', 'acciones'];
   // tslint:disable-next-line:max-line-length
-  displayedColumnsData = ['id_servicio', 'id_laboratorio', 'tipoServicio', 'nombre_s', 'descr_s', 'aux_id_servicio', 'precio_s', 'acreditado', 'acciones'];
+  displayedColumnsData = ['id_servicio', 'id_laboratorio', 'nombreLaboratorio', 'tipoServicio', 'nombre_s', 'descr_s', 'aux_id_servicio', 'precio_s', 'acreditado', 'acciones'];
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   // tslint:disable-next-line:max-line-length
-  constructor(private router: Router, private route: ActivatedRoute, private servicioService: ServicioService, private tipoServicioService: TipoServicioService, public dialog: MatDialog, private snackBar: MatSnackBar) { }
+  constructor(private router: Router, private route: ActivatedRoute, private servicioService: ServicioService, private laboratorioService: LaboratorioService, private tipoServicioService: TipoServicioService, public dialog: MatDialog, private snackBar: MatSnackBar) { }
 
 
   openDialog(servicio?: Servicio) {
@@ -56,11 +57,22 @@ export class ServicioComponent implements OnInit {
   }
   ngOnInit() {
     this.servicioService.ServicioCambio.subscribe(data => {
+      data.forEach(element => {
+        this.laboratorioService.listarLaboratorioPorId( element.id_laboratorio).subscribe ( laboratorio => {
+          element.nombreLaboratorio = laboratorio.nombre_l;
+        });
+      });
+      // tslint:disable-next-line:prefer-for-of
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
     this.servicioService.listarServicio().subscribe( data => {
+      data.forEach(element => {
+        this.laboratorioService.listarLaboratorioPorId( element.id_laboratorio).subscribe ( laboratorio => {
+          element.nombreLaboratorio = laboratorio.nombre_l;
+        });
+      });
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
