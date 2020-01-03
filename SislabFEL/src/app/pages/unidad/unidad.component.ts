@@ -54,6 +54,11 @@ export class UnidadComponent implements OnInit {
   }
   ngOnInit() {
     this.unidadService.unidadCambio.subscribe(data => {
+      data.forEach(element => {
+        this.unidadService.listarUnidadPorId(element.id_unidad).subscribe ( unidad => {
+          element.nombre_u = unidad.nombre_u;
+        });
+      });
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;

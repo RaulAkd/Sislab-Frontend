@@ -29,10 +29,10 @@ export class UnidadService {
     });
   }
 
-/*  // tslint:disable-next-line:variable-name
-  listarTipoServicioPorId(id_tiposerv: string) {
-    return this.http.get<TipoServicio>(`${this.url}/${id_tiposerv}`);
-  } */
+  // tslint:disable-next-line:variable-name
+  listarUnidadPorId(id_unidad: string) {
+    return this.http.get<Unidad>(`${this.url}/${id_unidad}`);
+  }
 
   registrarUnidad(unidad: Unidad) {
     return this.http.post( this.url, unidad);

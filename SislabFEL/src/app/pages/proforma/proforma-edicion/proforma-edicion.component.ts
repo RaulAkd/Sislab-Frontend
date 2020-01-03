@@ -30,6 +30,7 @@ export class ProformaEdicionComponent implements OnInit {
   subtotal = 0;
   subtotalIva = 0;
   nuevaProforma = true;
+  editarCliente = false;
 
   dataSource: MatTableDataSource<DetalleProforma>;
 
@@ -64,17 +65,35 @@ export class ProformaEdicionComponent implements OnInit {
       this.nuevaProforma = false;
       console.log('editar');
       // editar proforma
+      this.editarCliente = true;
+      this.seleccionCliente = true;
       this.proformaService.listarProformaPorId(this.data.id_proforma).subscribe( data => {
         console.log(data);
-        this.cliente.nombre_cl = data.cliente.id_cliente;
+        this.cliente.id_cliente = data.cliente.id_cliente;
+        this.cliente.nombre_cl = data.cliente.nombre_cl;
         this.cliente.direccion_cl = data.cliente.direccion_cl;
         this.cliente.telefono_cl = data.cliente.telefono_cl;
+        this.cliente.tipoCliente.iva_tcl = data.cliente.tipoCliente.iva_tcl;
         this.proforma.fecha = new Date(data.fecha).toISOString().slice(0, 10);
         this.cliente.ruc_cl = data.cliente.ruc_cl;
         this.cliente.cedula = data.cliente.cedula;
-        this.dataSource = new MatTableDataSource(this.data.detalleProforma);
+        this.data.detalleProforma.forEach(element => {
+          this.detalleProforma = element;
+          this.dataDetalleProforma.push(this.detalleProforma);
+        });
+        this.dataDetalleProforma = this.data.detalleProforma;
+        this.dataSource = new MatTableDataSource(this.dataDetalleProforma);
+        /*this.data.detalleProforma.forEach(element => {
+          this.detalleProforma = element;
+          this.dataDetalleProforma.push(this.detalleProforma);
+        });
+        // this.dataDetalleProforma = this.data.detalleProforma; */
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
+        this.subtotal = this.data.subtotal_po;
+        // this.detalleProforma.
+        this.subtotalIva = (this.subtotal * this.cliente.tipoCliente.iva_tcl) / 100;
+        this.proforma.total_po = this.data.total_po;
       });
     }
   }
@@ -114,7 +133,7 @@ export class ProformaEdicionComponent implements OnInit {
   }
 
   ingresoCliente() {
-      if (this.seleccionCliente === true) {
+      if (this.seleccionCliente === true  ) {
       return false;
     } else {
       return true;
@@ -150,16 +169,34 @@ export class ProformaEdicionComponent implements OnInit {
     this.proforma.iva_po = this.subtotalIva;
     // this.proforma.total_po = this.detalleProforma.totalservicio_po;
     this.proforma.estado_po = 'Pendiente';
-    this.proforma.fecha = new Date().toISOString().slice(0, 10);
-    this.proforma.detalleProforma = this.dataDetalleProforma;
-    console.log('Proforma a guardar');
-    console.log(this.proforma);
-    this.proformaService.registrarProforma(this.proforma).subscribe( data => {
-      this.proformaService.listarProforma().subscribe(proformas => {
-        this.proformaService.proformaCambio.next(proformas);
-        this.notificar('Se registro', 'Aviso');
+
+    if (!this.data.id_proforma) {
+      // nueva proforma
+      console.log('Guardar nueva proforma');
+      this.proforma.fecha = new Date().toISOString().slice(0, 10);
+      this.proforma.detalleProforma = this.dataDetalleProforma;
+      console.log('Proforma a guardar');
+      console.log(this.proforma);
+      this.proformaService.registrarProforma(this.proforma).subscribe( data => {
+        this.proformaService.listarProforma().subscribe(proformas => {
+          this.proformaService.proformaCambio.next(proformas);
+          this.notificar('Se registro', 'Aviso');
+        });
       });
-    });
+    } else {
+      // editar proforma
+      console.log('Editar proforma');
+      this.proforma.detalleProforma = this.dataDetalleProforma;
+      console.log('Proforma a guardar');
+      console.log(this.proforma);
+      this.proforma.id_proforma = this.data.id_proforma;
+      this.proformaService.modificarProforma(this.proforma).subscribe( data => {
+        this.proformaService.listarProforma().subscribe(proformas => {
+          this.proformaService.proformaCambio.next(proformas);
+          this.notificar('Se registro', 'Aviso');
+        });
+      });
+    }
     this.dialogRef.close();
   }
 

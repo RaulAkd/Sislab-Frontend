@@ -58,7 +58,7 @@
             </mat-toolbar-row>
         </mat-toolbar>
     </div>
-    <div class="containerButton" [ngClass]="{'ocultar': nuevaProforma === false}">
+    <div class="containerButton">
         <mat-toolbar>
             <mat-toolbar-row>
                 <span class="fill"></span>
@@ -157,13 +157,19 @@
             </div>
         </div>            
     </div>
-    <div class="containerObservacion">
+    <div class="containerObservacion" [ngClass]="{'ocultar': nuevaProforma === false}">
         <mat-form-field class="example-full-width">
             <input matInput placeholder="Observación" [(ngModel)]="proforma.obser_po">
         </mat-form-field>    
     </div>
 </div> 
 <div mat-dialog-actions>
-    <button mat-button cdkFocusInitial [disabled]="ingresoDatos()" (click)= "guardarProforma()" >Confirmar</button>
-    <button mat-button mat-dialog-close="false">Cancelar</button>
+    <mat-toolbar-row>
+        <span class="fill"></span>
+        <span>
+            <button mat-button cdkFocusInitial [disabled]="ingresoDatos()" (click)= "guardarProforma()" >Confirmar</button>
+            <button mat-button mat-dialog-close="false">Cancelar</button>
+        </span>
+        <span class="fill"></span>
+    </mat-toolbar-row>
 </div>

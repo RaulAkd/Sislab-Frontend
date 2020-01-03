@@ -1,1 +1,44 @@
-<p>proveedor-edicion works!</p>
+<h1 mat-dialog-title>Ingrese los datos de Proveedor</h1>
+<div mat-dialog-content>
+        <div [hidden] = "true">
+            <mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="proveedor.id_" placeholder="ID">
+            </mat-form-field>
+        </div>
+
+        <mat-form-field class="example-full-width">
+            <mat-select placeholder="Tipo Proveedor" [(value)]="selected">
+                <mat-option *ngFor="let t of tp " [value]="t.id_tipoproveedor">
+                    {{t.id_tipoproveedor}} - {{t.nombre_tpv}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field> 
+
+        <mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="proveedor.nombre_pv" placeholder="Nombre Proveedor">
+        </mat-form-field>
+    
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="proveedor.ruc_pv" placeholder="Ruc">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="proveedor.direccion_pv" placeholder="Direccion">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="proveedor.telefono_pv" placeholder="Telefono">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="proveedor.email_pv" placeholder="Email">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="proveedor.descr_pv" placeholder="Descripcion">
+        </mat-form-field>
+</div> 
+<div mat-dialog-actions>
+    <button mat-button cdkFocusInitial (click)= "operar(proveedor)" >Aceptar</button>
+    <button mat-button mat-dialog-close="false">Cancelar</button>
+</div>
