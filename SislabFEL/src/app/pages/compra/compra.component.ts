@@ -1,3 +1,4 @@
+import { UnidadService } from './../../_service/unidad.service';
 import { Compra } from './../../_model/compra';
 import { CompraEdicionComponent } from './compra-edicion/compra-edicion.component';
 import { CompraService } from './../../_service/compra.service';
@@ -18,13 +19,13 @@ export class CompraComponent implements OnInit {
 
   dataSource: MatTableDataSource<Compra>;
   // tslint:disable-next-line:max-line-length
-  displayedColumns = ['id_compra', 'id_unidad', 'proveedor', 'monto_co', 'descr_compra', 'documento_co', 'auxidcompra', 'acciones'];
+  displayedColumns = ['id_compra', 'id_unidad', 'nombreUnidad', 'proveedor', 'monto_co', 'descr_compra', 'documento_co', 'auxidcompra', 'acciones'];
   // tslint:disable-next-line:max-line-length
-  displayedColumnsData = ['id_compra', 'id_unidad', 'proveedor', 'monto_co', 'descr_compra', 'documento_co', 'auxidcompra', 'acciones'];
+  displayedColumnsData = ['id_compra', 'id_unidad', 'nombreUnidad', 'proveedor', 'monto_co', 'descr_compra', 'documento_co', 'auxidcompra', 'acciones'];
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   // tslint:disable-next-line:max-line-length
-  constructor(private router: Router, private route: ActivatedRoute, private compraService: CompraService,  public dialog: MatDialog, private snackBar: MatSnackBar) { }
+  constructor(private router: Router, private route: ActivatedRoute, private unidadService: UnidadService, private compraService: CompraService,  public dialog: MatDialog, private snackBar: MatSnackBar) { }
 
 
   openDialog(compra?: Compra) {
@@ -51,15 +52,20 @@ export class CompraComponent implements OnInit {
   }
   ngOnInit() {
     this.compraService.CompraCambio.subscribe(data => {
+      data.forEach(element => {
+        this.unidadService.listarUnidadPorId( element.id_unidad).subscribe ( unidad => {
+          element.nombreUnidad = unidad.nombre_u;
+        });
+      });
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
     this.compraService.listarCompra().subscribe( data => {
       data.forEach(element => {
-        if (element.fecha_co != null) {
-          element.fecha_co = new Date(element.fecha_co).toISOString().slice(0, 10);
-        }
+        this.unidadService.listarUnidadPorId( element.id_unidad).subscribe ( unidad => {
+          element.nombreUnidad = unidad.nombre_u;
+        });
       });
       console.log(data);
       this.dataSource = new MatTableDataSource(data);

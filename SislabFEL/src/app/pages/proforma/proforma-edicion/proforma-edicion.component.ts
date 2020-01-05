@@ -11,6 +11,8 @@ import { Proforma } from '../../../_model/proforma';
 import { ProformaService } from '../../../_service/proforma.service';
 import { Router } from '@angular/router';
 import { DetalleProformaEdicionComponent } from './detalle-proforma-edicion/detalle-proforma-edicion.component';
+import { TOKEN_NAME } from 'src/app/_shared/var.constant';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-proforma-edicion',
@@ -172,6 +174,12 @@ export class ProformaEdicionComponent implements OnInit {
 
     if (!this.data.id_proforma) {
       // nueva proforma
+      // Para generar id_compuesto
+      const helper = new JwtHelperService();
+      // tslint:disable-next-line:prefer-const
+      let token = JSON.parse(sessionStorage.getItem(TOKEN_NAME));
+      const decodedToken = helper.decodeToken(token.access_token);
+      this.proforma.id_emisor = decodedToken.user_name;
       console.log('Guardar nueva proforma');
       this.proforma.fecha = new Date().toISOString().slice(0, 10);
       this.proforma.detalleProforma = this.dataDetalleProforma;

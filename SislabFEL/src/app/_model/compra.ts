@@ -5,7 +5,7 @@ export class Compra {
     // tslint:disable-next-line:variable-name
     id_compra: string;
     // tslint:disable-next-line:variable-name
-    unidad: string;
+    id_unidad: string;
     // tslint:disable-next-line:variable-name
     proveedor: Proveedor;
     // tslint:disable-next-line:variable-name
@@ -18,4 +18,6 @@ export class Compra {
     documento_co: string;
     // tslint:disable-next-line:variable-name
     auxidcompra: number;
+    // tslint:disable-next-line:variable-name
+    nombreUnidad: string;
 }
