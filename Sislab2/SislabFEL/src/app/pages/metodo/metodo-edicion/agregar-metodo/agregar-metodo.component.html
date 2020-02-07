@@ -1,0 +1,25 @@
+<h1 mat-dialog-title>Ingresar detalle metodo</h1>
+<div mat-dialog-content>
+        <div>
+            <div>
+                <button mat-mini-fab color="primary" (click)="buscarExistencias()" id="botonBuscar">
+                    <mat-icon>search</mat-icon>
+                </button>        
+            </div>
+            <mat-form-field class="example-full-width">
+                <input matInput  [(ngModel)]="producto" placeholder="Producto">
+            </mat-form-field>
+        </div>
+        <mat-form-field class="example-full-width">
+            <input matInput disabled = "true" [(ngModel)]="unidadM" placeholder="Unidad Medida">
+        </mat-form-field>
+        <div>
+            <mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="cantidad" placeholder="Cantidad">
+            </mat-form-field>        
+        </div>
+</div> 
+<div mat-dialog-actions>
+    <button mat-button cdkFocusInitial [mat-dialog-close] = "data" >Aceptar</button>
+    <button mat-button mat-dialog-close="false">Cancelar</button>
+</div>

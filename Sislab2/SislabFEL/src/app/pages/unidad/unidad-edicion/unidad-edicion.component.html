@@ -1,0 +1,70 @@
+<h1 mat-dialog-title>Ingrese Datos de la Unidad</h1>
+<div mat-dialog-content>
+        <div [hidden] = "false">
+            <mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="unidad.id_unidad" placeholder="ID">
+            </mat-form-field>
+        </div>
+
+        <mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="unidad.nombre_u" placeholder="Nombre Unidad">
+        </mat-form-field>
+    
+        <mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="unidad.jefe_u" placeholder="Jefe Unidad" >
+        </mat-form-field>    
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="unidad.descr_u" placeholder="Descripcion" >
+        </mat-form-field>    
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="unidad.sigla_u" placeholder="Sigla" >
+        </mat-form-field>    
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="unidad.direccion_u" placeholder="Direccion" >
+        </mat-form-field>
+        
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="unidad.telefono_u" placeholder="Telefono" >
+        </mat-form-field>    
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="unidad.contacto1_u" placeholder="Contacto 1" >
+        </mat-form-field>    
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="unidad.contacto2_u" placeholder="Contacto 2" >
+        </mat-form-field>    
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="unidad.tel_cont1_u" placeholder="Telefono 1" >
+        </mat-form-field>    
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="unidad.tel_cont2_u" placeholder="Telefono 2" >
+        </mat-form-field>    
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="unidad.email_cont1_u" placeholder="Email 1 " >
+        </mat-form-field>    
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="unidad.email_cont2_u" placeholder="Email 2" >
+        </mat-form-field>    
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="unidad.codigo_u" placeholder="Codigo" >
+        </mat-form-field>  
+        
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="unidad.aux_id_unid" placeholder="Auxiliar" >
+        </mat-form-field>    
+
+
+</div> 
+<div mat-dialog-actions>
+    <button mat-button cdkFocusInitial (click)= "operar()" >Aceptar</button>
+    <button mat-button mat-dialog-close="false">Cancelar</button>
+</div>

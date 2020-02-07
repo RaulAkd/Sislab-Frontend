@@ -1,0 +1,65 @@
+<h1 mat-dialog-title>Editar Detalle Proforma</h1>
+<div mat-dialog-content>
+    <mat-toolbar-row>
+        <span>Servicio:</span>
+        <span class="fill"></span>
+        <span>
+            <mat-form-field>
+                <input  id="labelR" disabled=true matInput [(ngModel)]="data.servicio.nombre_s">
+            </mat-form-field>
+        </span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+        <span><!--<h5 id="tituloS">Metodo:</h5>-->Metodo:</span>
+        <span class="fill"></span>
+        <span>
+            <mat-form-field class="example-full-width">
+                <mat-select id="labelR" [placeholder]="data.metodo.nombre_mt" [(value)]="data.metodo.nombre_mt">
+                    <mat-option *ngFor="let m of metodosPorServicio" [value]="m.id_metodo">
+                        {{m.id_metodo}} - {{m.nombre_mt}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>    
+        </span>                            
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+        <span>Laboratorio:</span>
+        <span class="fill"></span>
+        <span>
+            <mat-form-field>
+                <input  id="labelR" disabled=true matInput [(ngModel)]="nombreLaboratorio">
+            </mat-form-field>
+        </span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+        <span>Cantidad:</span>
+        <span class="fill"></span>
+        <span>
+            <mat-form-field>
+                <input  id="labelR" matInput [(ngModel)]="data.cantidad_po">
+            </mat-form-field>
+        </span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+        <span>Valor Unitario (Sin Iva):</span>
+        <span class="fill"></span>
+        <span>
+            <mat-form-field>
+                <input id="labelR" matInput [(ngModel)]="data.valorunitario_po">
+            </mat-form-field>
+        </span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+        <span>Total Servicio:</span>
+        <span class="fill"></span>
+        <span>
+            <mat-form-field>
+                <input id="labelR" matInput [(ngModel)]="data.totalservicio_po">
+            </mat-form-field>
+        </span>
+    </mat-toolbar-row>
+</div>
+<div mat-dialog-actions>
+        <button mat-button cdkFocusInitial [mat-dialog-close] = "detalleProforma">Confirmar</button>
+        <button mat-button mat-dialog-close="false">Cancelar</button>
+</div>

@@ -1,0 +1,25 @@
+table {
+    width: 100%;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  td, th {
+    width: 25%;
+  }
+
+  .container{
+      padding: 2px;
+  }
+
+  #botonNuevo{
+      position: relative;
+      margin-left: 45%;
+  }
+
+  .resaltar {
+    background-color:silver;
+  }

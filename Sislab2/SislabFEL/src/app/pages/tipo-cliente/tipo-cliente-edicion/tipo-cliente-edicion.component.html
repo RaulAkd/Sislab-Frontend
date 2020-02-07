@@ -1,0 +1,30 @@
+<h1 mat-dialog-title>Ingrese los datos de tipo Cliente</h1>
+<div mat-dialog-content>
+    <form class="example-container" [formGroup]="form" #frmTipoCliente="ngForm">
+        <div [hidden] = "true">
+            <mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="data.id_tipocliente" placeholder="ID" required formControlName="id_tipocliente">
+            </mat-form-field>
+        </div>
+
+        <mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="data.tipo_tcl" placeholder="Tipo Cliente" required formControlName="tipo_tcl">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="data.factura_tcl" placeholder="Factura" required formControlName="factura_tcl">
+        </mat-form-field>
+    
+        <mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="data.descr_tcl" placeholder="Descripcion" required formControlName="descr_tcl">
+        </mat-form-field>
+    
+        <mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="data.iva_tcl" placeholder="Iva" required formControlName="iva_tcl">
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-button cdkFocusInitial [mat-dialog-close] = data >Aceptar</button>
+    <button mat-button mat-dialog-close="false">Cancelar</button>
+</div>

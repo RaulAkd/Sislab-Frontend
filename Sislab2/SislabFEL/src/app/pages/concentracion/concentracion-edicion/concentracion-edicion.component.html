@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>Ingrese datos de Concentracion</h1>
+<div mat-dialog-content>
+        <div [hidden] = "true">
+            <mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="concentracion.id_concentracion" placeholder="ID">
+            </mat-form-field>
+        </div>
+
+        <mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="concentracion.nombre_con" placeholder="Nombre">
+        </mat-form-field>
+    
+        <mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="concentracion.descr_con" placeholder="Descripcion" >
+        </mat-form-field>    
+</div> 
+<div mat-dialog-actions>
+    <button mat-button cdkFocusInitial (click)= "operar()" >Aceptar</button>
+    <button mat-button mat-dialog-close="false">Cancelar</button>
+</div>

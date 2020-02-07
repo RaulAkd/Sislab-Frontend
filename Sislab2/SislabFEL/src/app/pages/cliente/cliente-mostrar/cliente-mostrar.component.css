@@ -1,0 +1,23 @@
+table {
+    font-family: arial, sans-serif;
+    
+    border-color: aliceblue;
+    width: 100%;
+}
+  
+  td, th {
+    text-align: left;
+    padding: 8px;
+}
+
+.header {
+    margin-left: 20%;
+}
+
+.titulo {
+    margin-left: 20%;
+}
+
+.mat-dialog-actions {
+    margin-left: 38%;
+}

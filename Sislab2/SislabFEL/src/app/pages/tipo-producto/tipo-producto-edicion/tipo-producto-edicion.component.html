@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>Ingrese datos Tipo Producto</h1>
+<div mat-dialog-content>
+        <div [hidden] = "true">
+            <mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="tipoProducto.id_tipoprod" placeholder="ID">
+            </mat-form-field>
+        </div>
+
+        <mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="tipoProducto.nombre_tprod" placeholder="Nombre">
+        </mat-form-field>
+    
+        <mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="tipoProducto.descr_tprod" placeholder="Descripcion" >
+        </mat-form-field>    
+</div> 
+<div mat-dialog-actions>
+    <button mat-button cdkFocusInitial (click)= "operar()" >Aceptar</button>
+    <button mat-button mat-dialog-close="false">Cancelar</button>
+</div>

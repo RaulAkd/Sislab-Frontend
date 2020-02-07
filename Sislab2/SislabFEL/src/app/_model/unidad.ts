@@ -1,0 +1,32 @@
+export class Unidad {
+    // tslint:disable-next-line:variable-name
+    id_unidad: string;
+    // tslint:disable-next-line:variable-name
+    nombre_u: string;
+    // tslint:disable-next-line:variable-name
+    jefe_u: string;
+    // tslint:disable-next-line:variable-name
+    descr_u: string;
+    // tslint:disable-next-line:variable-name
+    sigla_u: string;
+    // tslint:disable-next-line:variable-name
+    direccion_u: string;
+    // tslint:disable-next-line:variable-name
+    telefono_u: string;
+    // tslint:disable-next-line:variable-name
+    contacto1_u: string;
+    // tslint:disable-next-line:variable-name
+    contacto2_u: string;
+    // tslint:disable-next-line:variable-name
+    tel_cont1_u: string;
+    // tslint:disable-next-line:variable-name
+    tel_cont2_u: string;
+    // tslint:disable-next-line:variable-name
+    email_cont1_u: string;
+    // tslint:disable-next-line:variable-name
+    email_cont2_u: string;
+    // tslint:disable-next-line:variable-name
+    codigo_u: string;
+    // tslint:disable-next-line:variable-name
+    aux_id_unid: string;
+}

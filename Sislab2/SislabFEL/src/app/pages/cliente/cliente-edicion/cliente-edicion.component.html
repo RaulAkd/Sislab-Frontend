@@ -1,0 +1,72 @@
+<h1 mat-dialog-title>Ingrese los datos de Cliente</h1>
+<div mat-dialog-content>
+        <div [hidden] = "true">
+            <mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="cliente.id_cliente" placeholder="ID">
+            </mat-form-field>
+        </div>
+
+        <mat-form-field class="example-full-width">
+            <mat-select placeholder="Tipo Cliente" [(value)]="selected">
+                <mat-option *ngFor="let t of tc " [value]="t.id_tipocliente">
+                    {{t.id_tipocliente}} - {{t.tipo_tcl}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field> 
+
+        <mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="cliente.nombre_cl" placeholder="Nombre Cliente">
+        </mat-form-field>
+    
+        <mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="cliente.direccion_cl" placeholder="Direccion" >
+        </mat-form-field>
+    
+        <mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="cliente.cedula" placeholder="Cedula">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="cliente.ruc_cl" placeholder="Ruc">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="cliente.telefono_cl" placeholder="Telefono">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="cliente.otrofono_cl" placeholder="Telefono 2">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="cliente.celular_cl" placeholder="Celular">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="cliente.fax_cl" placeholder="Fax">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="cliente.email_cl" placeholder="Email">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="cliente.contacto_cl" placeholder="Contacto">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="cliente.nombre_usuario" placeholder="Nombre Usuario">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="cliente.fechatrans" placeholder="Fecha">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="cliente.pasaporte_cl" placeholder="Pasaporte">
+        </mat-form-field>
+</div> 
+<div mat-dialog-actions>
+    <button mat-button cdkFocusInitial (click)= "operar(cliente)" >Aceptar</button>
+    <button mat-button mat-dialog-close="false">Cancelar</button>
+</div>

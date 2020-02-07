@@ -1,0 +1,44 @@
+<h1 mat-dialog-title>Ingrese los datos de compra</h1>
+<div mat-dialog-content>
+        <div [hidden] = "true">
+            <mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="compra.id_compra" placeholder="ID">
+            </mat-form-field>
+        </div>
+
+        <mat-form-field class="example-full-width">
+            <mat-select placeholder="Nombre Proveedor" [(value)]="selected">
+                <mat-option *ngFor="let p of pv " [value]="p.id_proveedor">
+                    {{p.id_proveedor}} - {{p.nombre_pv}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="compra.id_unidad" placeholder="Id Unidad">
+        </mat-form-field>
+    
+        <mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="compra.fecha_co" placeholder="Fecha compra" >
+        </mat-form-field>
+    
+        <mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="compra.monto_co" placeholder="Monto">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="compra.descr_compra" placeholder="Descripcion">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="compra.documento_co" placeholder="Documento">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="compra.auxidcompra" placeholder="Auxiliar">
+        </mat-form-field>
+</div> 
+<div mat-dialog-actions>
+    <button mat-button cdkFocusInitial (click)= "operar(compra)" >Aceptar</button>
+    <button mat-button mat-dialog-close="false">Cancelar</button>
+</div>

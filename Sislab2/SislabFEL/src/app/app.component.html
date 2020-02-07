@@ -1,0 +1,71 @@
+<div id = "myContainer">
+    <div class="container">
+        <div class="containerToolbar" >
+            <mat-toolbar id="toolbarPrincipal">
+                    <mat-toolbar-row>
+                        <span>
+                            <img id = "img1" src="../assets/Escudo_de_la_Escuela_Politécnica_Nacional.png" alt="">
+                        </span>            
+                        <span class="fill2"></span>
+                        <span id="spanTitulo">
+                            <h1 id="titulo1">ESCUELA POLITÉCNICA NACIONAL</h1>
+                            <h2 id="titulo2">Sistema Integrado de Información - SII</h2>
+                        </span>
+                        <span class="fill"></span>
+                        <span id="spanLeft" >
+                            <div id="cardSesion">
+                                <P>Bienvenido:</P>
+                                <p>Rol()</p>
+                                <button id="buttonCerrarSesion" (click)="loginService.cerrarSesion()"  mat-button>Cerrar Sesión</button>
+                            </div>
+                        </span>        
+                    </mat-toolbar-row>
+                    
+                </mat-toolbar>
+        </div>
+        <div class="container3">
+            <mat-drawer-container  class="example-container">
+                    <mat-drawer *ngIf="loginService.estaLogeado()" id="side" mode="side" opened>
+                        <p>Menú de Opciones</p>
+                        <mat-accordion id="acordion">
+                            <mat-expansion-panel *ngIf="accesos1" id="expansionPanel">
+                              <mat-expansion-panel-header>
+                                <mat-panel-title>Proformas</mat-panel-title>
+                              </mat-expansion-panel-header>            
+                              <div *ngFor="let m1 of micro1">
+                                <a routerLink="{{m1.url}}"> {{m1.titulo}}</a><br>
+                              </div>  
+                            </mat-expansion-panel>
+                        </mat-accordion>                          
+                        <mat-accordion>
+                            <mat-expansion-panel *ngIf="accesos2" id="expansionPanel2">
+                              <mat-expansion-panel-header>
+                                <mat-panel-title>Orden de Trabajo</mat-panel-title>
+                              </mat-expansion-panel-header>
+                              <div *ngFor="let m2 of micro2">
+                                <a *ngIf="!(ordenDeTrabajo(m2.titulo))" routerLink="{{m2.url}}"> {{m2.titulo}}</a>
+                                <div *ngIf="ordenDeTrabajo(m2.titulo)">
+                                    <a routerLink="{{m2.url}}"> OT Interna</a>                                 
+                                </div>
+                                <br>                        
+                              </div>                                        
+                            </mat-expansion-panel>
+                        </mat-accordion>                          
+                        <mat-accordion>
+                            <mat-expansion-panel *ngIf="accesos3" id="expansionPanel3">
+                              <mat-expansion-panel-header>
+                                <mat-panel-title>Gestion de Productos</mat-panel-title>
+                              </mat-expansion-panel-header>     
+                              <div *ngFor="let m3 of micro3">
+                                <a routerLink="{{m3.url}}"> {{m3.titulo}}</a><br>
+                              </div>           
+                            </mat-expansion-panel>
+                        </mat-accordion>                          
+                    </mat-drawer>
+                    <mat-drawer-content>          
+                        <router-outlet></router-outlet>  
+                    </mat-drawer-content>
+                  </mat-drawer-container>
+        </div>  
+    </div>    
+</div>

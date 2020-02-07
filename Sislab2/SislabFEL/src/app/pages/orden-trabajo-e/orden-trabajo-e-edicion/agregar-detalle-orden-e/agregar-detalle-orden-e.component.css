@@ -1,0 +1,163 @@
+.fill{
+    flex: 1 1 auto;
+}
+
+table {
+    width: 100%;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  td, th {
+    width: 25%;
+  }
+
+  .container{
+      padding-top: 10vh;
+  }
+
+  #botonNuevo{
+      position: relative;
+      margin-left: 45%;
+  }
+
+  .container{
+    /*padding: 20px;*/
+    /*background-color: rgba(66, 103, 178, 1);*/
+    background-color: white;
+    margin-top: 10px;
+    margin-left: 40px;
+    margin-right: 40px;
+    padding-bottom: 2px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+}
+#myContainer{
+    background-color: rgba(210, 210, 210, 0.5);
+    padding: 10px;
+}
+
+
+.containerToolbar{
+    /* background-color: aquamarine; */
+    border-radius: 20px;
+    /* padding: 1vh; */
+}
+
+.fill{
+    flex: 1 1 auto;
+}
+
+#img1{
+ width: 5vmax;
+}
+
+#titulo1{
+    color: rgba(11, 28, 75, 1);
+    line-height: 70%;
+    font-size: 2.3vw;
+}
+
+#titulo2{
+    color: rgba(154, 54, 4, 1);
+    font-size: 2vw;
+}
+
+#toolbarPrincipal{
+    padding: 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+#cardSesion{
+    padding-right: 1px;
+  /*  margin-top:8vh;*/
+    height: 80%;
+    width: 100%;
+    margin-right: 1vh;
+    font-size: 2.4vh;
+    line-height: 1vh;
+   /* max-height: 20vh;
+    min-height: 20vh;*/
+}
+
+#buttonCerrarSesion{
+     font-size: 2.4vh;
+    text-align: center;
+    padding-top: 2px;
+
+}
+
+#spanLeft{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.container3{
+    padding: 2px;
+}
+
+.example-container {
+    margin: 10px;
+    /*border: 1px solid #555;*/
+    height: 50vh;
+  }
+  
+  #side{
+      text-align: center;
+      padding: 3px;
+      width: 50%;
+      color: black;
+      background-color: rgba(245, 245, 245, 1);
+      border-radius: 10px;
+      border-right-color: white;
+      font-size: 3vh;
+  }
+
+
+  .container3 .example-container mat-panel-title{
+      color: white;
+  }
+
+  .container3 a {
+    float: left;
+    /* color: rgba(240, 240, 240, 1);  */
+    color: rgba(205, 211, 215, 1); 
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .container3 a:hover {
+    color: white;
+    font-size: 2.6vh;
+  }
+
+.containerContent {
+    width: 150vh;
+}
+
+.mat-drawer-content {
+    padding-left: 3vh;
+}
+
+.mat-toolbar-row {
+    height: 5vh;
+}
+
+#tituloS {
+    color: brown;
+    font-size: 2vh;
+}
+
+#valorS {
+    font-size: 2vh;
+}
+
+#entrada {
+    color: red;
+    text-align: right;
+}

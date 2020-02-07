@@ -1,0 +1,80 @@
+<h1 mat-dialog-title>Ingrese los datos de producto</h1>
+<div mat-dialog-content>
+        <div [hidden] = "false">
+            <mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="producto.id_producto" placeholder="ID">
+            </mat-form-field>
+        </div>
+
+        <mat-form-field class="example-full-width">
+            <mat-select placeholder="RiesgoEspecifico" [(value)]="selected">
+                <mat-option *ngFor="let r of re " [value]="r.id_riesgoespecifico">
+                    {{r.id_riesgoespecifico}} - {{r.nombre_re}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field> 
+
+        <mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="producto.nombre_pr" placeholder="Nombre">
+        </mat-form-field>
+    
+        <mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="producto.descr_pr" placeholder="Descripcion" >
+        </mat-form-field>
+    
+        <mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="producto.stockmin_pr" placeholder="Stock Min">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="producto.stock_pr" placeholder="Stocl Producto">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="producto.stockcrt_pr" placeholder="Stock CRT">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="producto.iupac_pr" placeholder="Iupac">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="producto.riesgo_pr" placeholder="Riesgo">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="producto.formula_pr" placeholder="Formula">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="producto.colorriesgo_pr" placeholder="Color Riesgo">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="producto.precio_pr" placeholder="Precio">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="producto.riesgosalud_pr" placeholder="Riesgo Salud">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="producto.riesgoinflamabilidad_pr" placeholder="Riesgo Inflamabilidad">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="producto.riesgoreactividad_pr" placeholder="Riesfo Reactividad">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="producto.aux_idprod" placeholder="Aux ID">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="producto.id_tipoprod" placeholder="Id tipo ProductoT">
+        </mat-form-field>
+</div> 
+<div mat-dialog-actions>
+    <button mat-button cdkFocusInitial (click)= "operar(producto)" >Aceptar</button>
+    <button mat-button mat-dialog-close="false">Cancelar</button>
+</div>

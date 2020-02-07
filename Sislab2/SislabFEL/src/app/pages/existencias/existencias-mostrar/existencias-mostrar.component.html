@@ -1,0 +1,199 @@
+<h1 mat-dialog-title>Listado de Productos</h1>
+<div mat-dialog-content>
+        <div class="container">
+                <mat-form-field>
+                    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+                </mat-form-field>
+                <div class="mat-elevation-z8">
+                    <table mat-table [dataSource]="dataSource" matSort>          
+                        <!-- ID Column -->
+                        <ng-container matColumnDef="id_existencias">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+                            <td mat-cell *matCellDef="let row"> {{row.id_existencias}} </td>
+                        </ng-container>
+            
+                        <!-- ID Unidad Column -->
+                        <ng-container matColumnDef="id_unidad">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> ID Unidad </th>
+                            <td mat-cell *matCellDef="let row"> {{row.id_unidad}} </td>
+                        </ng-container>
+            
+                        <!-- ID Column -->
+                        <ng-container matColumnDef="producto">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Producto </th>
+                            <td mat-cell *matCellDef="let row"> {{row.producto.id_producto}} </td>
+                        </ng-container> 
+            
+                        <!-- ID Bodega Column -->
+                        <ng-container matColumnDef="bodega">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Bodega </th>
+                            <td mat-cell *matCellDef="let row"> {{row.bodega.id_bodega}} </td>
+                        </ng-container> 
+            
+                        <!-- ID Presentacion Column -->
+                        <ng-container matColumnDef="presentacion">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Presentacion </th>
+                            <td mat-cell *matCellDef="let row"> {{row.presentacion.id_presentacion}} </td>
+                        </ng-container> 
+            
+                        <!-- ID Unidad Medida Column -->
+                        <ng-container matColumnDef="unidadMedida">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Unidad de Medida </th>
+                            <td mat-cell *matCellDef="let row"> {{row.unidadMedida.id_umedida}} </td>
+                        </ng-container> 
+            
+                        <!-- ID Estado Producto Column -->
+                        <ng-container matColumnDef="estadoProducto">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>Estado Producto </th>
+                            <td mat-cell *matCellDef="let row"> {{row.estadoProducto.id_estadoprod}} </td>
+                        </ng-container> 
+            
+                        <!-- ID Grado Column -->
+                        <ng-container matColumnDef="grado">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Grado </th>
+                            <td mat-cell *matCellDef="let row"> {{row.grado.id_grado}} </td>
+                        </ng-container> 
+            
+                        <!-- Hidratacion Column -->
+                        <ng-container matColumnDef="hidratacion">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Hidratacion </th>
+                            <td mat-cell *matCellDef="let row"> {{row.id_hidratacion}} </td>
+                        </ng-container>
+            
+                        <!-- Posgiro Column -->
+                        <ng-container matColumnDef="posgiro">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Posgiro </th>
+                            <td mat-cell *matCellDef="let row"> {{row.posgiro.id_posgiro}} </td>
+                        </ng-container>
+            
+                        <!-- Cantidad Column -->
+                        <ng-container matColumnDef="cantidad_e">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Cantidad </th>
+                            <td mat-cell *matCellDef="let row"> {{row.cantidad_e}} </td>
+                        </ng-container>
+                                  
+                        <!-- Fecha Caducidad Column -->
+                        <ng-container matColumnDef="fechacad_e">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha Caducidad </th>
+                            <td mat-cell *matCellDef="let row"> {{row.fechacad_e}} </td>
+                        </ng-container>
+                        
+                        <!-- Obsolescencia Column -->
+                        <ng-container matColumnDef="obsolescencia_e">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Obsolescencia </th>
+                            <td mat-cell *matCellDef="let row"> {{row.obsolescencia_e}} </td>
+                        </ng-container>
+            
+            
+                        <!-- Tasa Uso Column -->
+                        <ng-container matColumnDef="tasauso_e">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Tasa Uso </th>
+                            <td mat-cell *matCellDef="let row"> {{row.tasauso_e}} </td>
+                        </ng-container>
+            
+                        <!-- Numero de envase Column -->
+                        <ng-container matColumnDef="nenvase_e">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Numero de envase </th>
+                            <td mat-cell *matCellDef="let row"> {{row.nenvase_e}} </td>
+                        </ng-container>
+            
+                        <!-- Fecha Baja Column -->
+                        <ng-container matColumnDef="fechabaja_e">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha Baja </th>
+                            <td mat-cell *matCellDef="let row"> {{row.fechabaja_e}} </td>
+                        </ng-container>
+            
+                        <!-- Ubica Column -->
+                        <ng-container matColumnDef="ubica_e">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Ubica </th>
+                            <td mat-cell *matCellDef="let row"> {{row.ubica_e}} </td>
+                        </ng-container>
+            
+                        <!-- Pureza Column -->
+                        <ng-container matColumnDef="pureza_e">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Pureza </th>
+                            <td mat-cell *matCellDef="let row"> {{row.pureza_e}} </td>
+                        </ng-container>
+            
+                        <!-- Concentracion Column -->
+                        <ng-container matColumnDef="concentracion">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Concentracion </th>
+                            <td mat-cell *matCellDef="let row"> {{row.concentracion.id_concentracion}} </td>
+                        </ng-container>
+            
+                        <!-- Caracteristica Column -->
+                        <ng-container matColumnDef="caracteristica">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Caracteristica </th>
+                            <td mat-cell *matCellDef="let row"> {{row.caracteristica.id_caracteristica}} </td>
+                        </ng-container>
+            
+                        <!-- Cantidad Neta Column -->
+                        <ng-container matColumnDef="cantidadneta_e">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Cantidad Neta </th>
+                            <td mat-cell *matCellDef="let row"> {{row.cantidadneta_e}} </td>
+                        </ng-container>
+                        
+                        <!-- Tipo Producto Column -->
+                        <ng-container matColumnDef="tipoProducto">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Tipo Producto </th>
+                            <td mat-cell *matCellDef="let row"> {{row.tipoProducto.id_tipoprod}} </td>
+                        </ng-container>
+            
+                        <!-- DISM Column -->
+                        <ng-container matColumnDef="dism">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> DISM </th>
+                                <td mat-cell *matCellDef="let row"> {{row.dism}} </td>
+                        </ng-container>
+                        
+                        <!-- Increm Column -->
+                        <ng-container matColumnDef="increm">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Incremento </th>
+                                <td mat-cell *matCellDef="let row"> {{row.increm}} </td>
+                        </ng-container>
+                            
+                        <!-- Aux1 Column -->
+                        <ng-container matColumnDef="aux1">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Auxiliar 1 </th>
+                                <td mat-cell *matCellDef="let row"> {{row.aux1}} </td>
+                        </ng-container>
+            
+                        <!-- Aux2 Column -->
+                        <ng-container matColumnDef="aux2">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Auxiliar 2 </th>
+                                <td mat-cell *matCellDef="let row"> {{row.aux2}} </td>
+                        </ng-container>
+            
+                        <!-- TOI Column -->
+                        <ng-container matColumnDef="toi">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> TOI </th>
+                                <td mat-cell *matCellDef="let row"> {{row.toi}} </td>
+                        </ng-container>
+            
+                        <!-- Acciones Column -->
+                        <ng-container matColumnDef="acciones">
+                            <th mat-header-cell *matHeaderCellDef> Acciones </th>
+                            <!-- <td mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.color}} </td> -->
+                            <td mat-cell *matCellDef="let row">
+                                <button mat-icon-button color="primary" [routerLink]="['existencias', row.id_existencias]" (click)="openDialog(row)">
+                                    <mat-icon>edit</mat-icon>
+                                </button>
+                                <button mat-icon-button color="accent" (click)="eliminarExistencias(row.id_existencias)">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                            </td>
+                        </ng-container>
+                                  
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns" ></tr>
+                        <tr mat-row [ngClass]="{'resaltar': selectedRowIndex === row.id_existencia}" *matRowDef="let row; columns: displayedColumnsData;" (click)="seleccion(row)">
+                        </tr>
+                    </table>
+                    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+                </div>        
+            </div>
+</div> 
+<div mat-dialog-actions>
+        <button mat-button cdkFocusInitial [mat-dialog-close] = "datos">Aceptar</button>
+        <button mat-button mat-dialog-close="false">Cancelar</button>
+</div>
+    
+    

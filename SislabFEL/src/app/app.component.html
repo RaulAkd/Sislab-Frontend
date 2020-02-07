@@ -35,13 +35,6 @@
                               <div *ngFor="let m1 of micro1">
                                 <a routerLink="{{m1.url}}"> {{m1.titulo}}</a><br>
                               </div>  
-                              
-                              <!--<a [routerLink]="['/cliente']">Cliente</a><br>
-                              <a [routerLink]="['/metodo']">Metodo</a><br>
-                              <a [routerLink]="['/proforma']">Proforma</a><br>
-                              <a [routerLink]="['/servicio']">Servicio</a><br>
-                              <a [routerLink]="['/tipoCliente']">Tipo Cliente</a><br>
-                              <a [routerLink]="['/tipoServicio']">Tipo Servicio</a><br> -->
                             </mat-expansion-panel>
                         </mat-accordion>                          
                         <mat-accordion>
@@ -50,14 +43,13 @@
                                 <mat-panel-title>Orden de Trabajo</mat-panel-title>
                               </mat-expansion-panel-header>
                               <div *ngFor="let m2 of micro2">
-                                <a routerLink="{{m2.url}}"> {{m2.titulo}}</a><br>
-                              </div>                
-                              <!--<a *ngFor="let m2 of microservicio2" routerLink="{{m2.url}}">{{m2.titulo}}</a><br> -->
-                              <!--<a [routerLink]="['/cargosPersonal']">Cargos Personal</a><br>
-                              <a [routerLink]="['/laboratorio']">Laboratorio</a><br>
-                              <a [routerLink]="['/personal']">Personal</a><br>
-                              <a [routerLink]="['/tipoPersonal']">Tipo Personal</a><br>
-                              <a [routerLink]="['/unidad']">Unidad</a><br> -->
+                                <a *ngIf="!(ordenDeTrabajo(m2.titulo))" routerLink="{{m2.url}}"> {{m2.titulo}}</a>
+                                <div *ngIf="ordenDeTrabajo(m2.titulo)">
+                                    <a routerLink="{{m2.url}}"> OT Interna</a><br>                                    
+                                    <a routerLink="{{m2.url}}"> OT Externa</a>                          
+                                </div>
+                                <br>                        
+                              </div>                                        
                             </mat-expansion-panel>
                         </mat-accordion>                          
                         <mat-accordion>
@@ -68,26 +60,10 @@
                               <div *ngFor="let m3 of micro3">
                                 <a routerLink="{{m3.url}}"> {{m3.titulo}}</a><br>
                               </div>           
-                              <!--<a *ngFor="let m3 of microservicio3" routerLink="{{m3.url}}">{{m3.titulo}}</a><br>-->
-                              <!--<a [routerLink]="['/estadoProducto']">Estado Producto</a><br>
-                              <a [routerLink]="['/bodega']">Bodega</a><br>
-                              <a [routerLink]="['/caracteristica']">Caracteristica</a><br>
-                              <a [routerLink]="['/concentracion']">Concentracion</a><br>
-                              <a [routerLink]="['/estadoProducto']">Estado Producto</a><br>
-                              <a [routerLink]="['/existencias']">Existencias</a><br>
-                              <a [routerLink]="['/grado']">Grado</a><br>
-                              <a [routerLink]="['/posgiro']">Posgiro</a><br>
-                              <a [routerLink]="['/presentacion']">Presentacion</a><br>
-                              <a [routerLink]="['/producto']">Producto</a><br>
-                              <a [routerLink]="['/riesgoEspecifico']">Riesgo Especifico</a><br>
-                              <a [routerLink]="['/tipoProducto']">Tipo Producto</a><br>
-                              <a [routerLink]="['/tipoProveedor']">Tipo Proveedor</a><br>
-                              <a [routerLink]="['/unidadMedida']">Unidad Medida</a><br> -->
                             </mat-expansion-panel>
                         </mat-accordion>                          
                     </mat-drawer>
-                    <mat-drawer-content>
-                        
+                    <mat-drawer-content>          
                         <router-outlet></router-outlet>  
                     </mat-drawer-content>
                   </mat-drawer-container>

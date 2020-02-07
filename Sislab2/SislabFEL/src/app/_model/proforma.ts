@@ -1,0 +1,50 @@
+import { Cliente } from './cliente';
+import { DetalleProforma } from './detalle-proforma';
+export class Proforma {
+    // tslint:disable-next-line:variable-name
+    id_proforma: string;
+    // tslint:disable-next-line:variable-name
+    cliente: Cliente;
+    // tslint:disable-next-line:variable-name
+    subtotal_po: number;
+    // tslint:disable-next-line:variable-name
+    iva_po: number;
+    // tslint:disable-next-line:variable-name
+    total_po: number;
+    // tslint:disable-next-line:variable-name
+    fecha: string;
+    // tslint:disable-next-line:variable-name
+    estado_po: string;
+    // tslint:disable-next-line:variable-name
+    auxid_proforma: number;
+    // tslint:disable-next-line:variable-name
+    representante_po: string;
+    // tslint:disable-next-line:variable-name
+    obser_po: string;
+    // tslint:disable-next-line:variable-name
+    motivo_estadopo: string;
+    // tslint:disable-next-line:variable-name
+    id_usuario: number;
+    // tslint:disable-next-line:variable-name
+    fecha_ptarjeta: Date;
+    // tslint:disable-next-line:variable-name
+    codigo_autoriza: string;
+    // tslint:disable-next-line:variable-name
+    id_emisor: string;
+    // tslint:disable-next-line:variable-name
+    tarjeta: string;
+    // tslint:disable-next-line:variable-name
+    obser_trj: string;
+    // tslint:disable-next-line:variable-name
+    codigo_resultado: string;
+    // tslint:disable-next-line:variable-name
+    codigo_operacion: string;
+    // tslint:disable-next-line:variable-name
+    codigo_plam: string;
+    // tslint:disable-next-line:variable-name
+    codigo_cuota: string;
+    // tslint:disable-next-line:variable-name
+    procesoweb_po: string;
+    // tslint:disable-next-line:variable-name
+    detalleProforma: DetalleProforma[];
+}

@@ -1,0 +1,36 @@
+<h1 mat-dialog-title>Ingrese datos de Bodega</h1>
+<div mat-dialog-content>
+        <div [hidden] = "true">
+            <mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="bodega.id_bodega" placeholder="ID">
+            </mat-form-field>
+        </div>
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="bodega.id_unidad" placeholder="Id unidad">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="bodega.id_usuario" placeholder="Id id_usuario">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="bodega.nombre_bg" placeholder="Nombre">
+        </mat-form-field>
+    
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="bodega.ubicacion_bg" placeholder="Ubicacion">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="bodega.descr_bg" placeholder="Descripcion" >
+        </mat-form-field>    
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="bodega.habiltar_bd" placeholder="Habilitar" >
+        </mat-form-field>
+</div> 
+<div mat-dialog-actions>
+    <button mat-button cdkFocusInitial (click)= "operar()" >Aceptar</button>
+    <button mat-button mat-dialog-close="false">Cancelar</button>
+</div>
