@@ -49,7 +49,7 @@
                                 <th mat-header-cell *matHeaderCellDef> Accion </th>
                                 <!-- <td mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.color}} </td> -->
                                 <td mat-cell *matCellDef="let row">
-                                    <button mat-icon-button color="primary" (click)="seleccionar(row)">
+                                    <button mat-icon-button color="primary" (click)="seleccionar(row)" [disabled]= "asignadoOK()">
                                         <mat-icon>forward</mat-icon>
                                     </button>
                                 </td>
@@ -125,20 +125,32 @@
                                     </mat-form-field>
                                 </span>
                         </mat-toolbar-row>
-
-                        <mat-toolbar-row>
+                        
+                        <mat-toolbar-row>                        
                             <span id="buscar">
-                                    <button mat-raised-button color="primary" (click)= "buscarPersonal()" id="botonBuscar">
-                                            <mat-icon>search</mat-icon>Buscar Personal
+                                    <button mat-icon-button color="primary" (click)= "buscarPersonal()" id="botonBuscar">
+                                            <mat-icon>search</mat-icon>Buscar
+                                    </button>
+                            </span>
+                            <span class="fill"></span>                                                
+                            <span>
+                                <mat-form-field class="example-full-width">
+                                    <input id="entrada" matInput [(ngModel)]="detalleOrden.nombrePersonal">
+                                </mat-form-field>                
+                            </span>                                                                  
+                        </mat-toolbar-row>
+
+                        <mat-toolbar-row id="botonAsignar">
+                            <span class="fill"></span>
+                            <span id="buscar">
+                                    <button mat-stroked-button color="primary" (click)= "asignarPersonal()" id="botonBuscar" [disabled]= "asignarPersonalOK()">
+                                            <mat-icon>how_to_reg</mat-icon>Asignar Personal
                                     </button>
                             </span>
                             <span class="fill"></span>
-                            <span class="fill"></span>
-                            <span>
-                                <mat-form-field>
-                                    <input id="entrada" matInput [(ngModel)]="detalleOrden.nombrePersonal">
-                                </mat-form-field>
-                            </span>
+                        </mat-toolbar-row>
+                        <mat-toolbar-row>
+                            <span></span>
                         </mat-toolbar-row>
                     </mat-toolbar>
                 </div>
@@ -147,6 +159,14 @@
     </div>
 </div>
 <div mat-dialog-actions>
-        <button mat-button cdkFocusInitial [mat-dialog-close] = "detalleOrden">Confirmar</button>
-        <button mat-button mat-dialog-close="false">Cancelar</button>
+    <mat-toolbar-row>
+        <span class="fill"></span>
+        <span>
+            <button mat-button cdkFocusInitial [mat-dialog-close] = "detalleOrden" [disabled]= "agregarDetalleOrdenOK()">Confirmar</button>
+        </span>
+        <span>
+            <button mat-button mat-dialog-close="false">Cancelar</button>
+        </span>
+        <span class="fill"></span>
+    </mat-toolbar-row>
 </div>

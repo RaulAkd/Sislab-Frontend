@@ -79,7 +79,10 @@ export class AgregarDetalleOrdenComponent implements OnInit {
     console.log('seleccion fila');
     console.log(row);
 
-    // console.log(row.index);
+    // this.detalleProforma.servicio.nombre_s = row.nombre_s;
+   // this.detalleOrden.id_detalleorden = '1';
+    this.detalleOrden.nombreServicio = row.nombre_s;
+    this.detalleOrden.id_servicio = row.id_servicio;
     // this.detalleOrden.id_laboratorio = row.id_laboratorio;
     // this.detalleProforma.nombreLaboratorio = row.nombreLaboratorio;
     // this.detalleProforma.valorunitario_po = row.precio_s;
@@ -91,7 +94,6 @@ export class AgregarDetalleOrdenComponent implements OnInit {
         }
       });
     });
-    // this.dataSource.data.slice();
   }
 
   buscarPersonal(parametro?: string) {

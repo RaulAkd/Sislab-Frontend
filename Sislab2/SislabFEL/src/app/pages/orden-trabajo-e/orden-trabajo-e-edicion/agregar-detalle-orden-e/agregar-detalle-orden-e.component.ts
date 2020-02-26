@@ -27,7 +27,11 @@ import { ListaPersonalComponent } from '../../../personal/lista-personal/lista-p
 })
 export class AgregarDetalleOrdenEComponent implements OnInit {
 
+  asignadoBool = true;
+  asignarPersonalBool = false;
+  agregarDetalleOrdenBool = false;
   servicios: Array<Servicio>;
+  serviciosAuxiliar: Array<Servicio>;
   proforma: Proforma;
   personal: Personal;
   detalleOrden: DetalleOrden;
@@ -53,9 +57,8 @@ export class AgregarDetalleOrdenEComponent implements OnInit {
   ngOnInit() {
     this.detalleOrden = new DetalleOrden();
     this.servicios = new Array<Servicio>();
+    this.serviciosAuxiliar = new Array<Servicio>();
     this.proforma = Object.assign({} , this.data);
-    console.log('Proforma Recibida');
-    console.log(this.proforma);
 
     // tslint:disable-next-line:no-shadowed-variable
     this.proforma.detalleProforma.forEach(element => {
@@ -70,24 +73,32 @@ export class AgregarDetalleOrdenEComponent implements OnInit {
   }
 
   seleccionar(row: any) {
-    console.log('seleccion fila');
-    console.log(row);
-    console.log('Servicios');
-    console.log(this.servicios);
-    // tslint:disable-next-line:prefer-const
+    this.asignadoBool = false;
+    this.asignarPersonalBool = true;
     let cont = -1;
+    let posicion = 0;
+    let auxiliar = row.id_servicio;
     // tslint:disable-next-line:no-shadowed-variable
     this.servicios.forEach(element => {
       cont++;
-      if (element.id_servicio === row.id_servicio) {
-        this.servicios.splice(cont, cont + 1);
-        this.dataSource = new MatTableDataSource(this.servicios);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
-        row.id_servicio = 0;
+      if (element.id_servicio === auxiliar) {
+        posicion = cont;
+        auxiliar = 0;
       }
     });
-
+    cont = -1;
+    this.serviciosAuxiliar = new Array<Servicio>();
+    // tslint:disable-next-line:no-shadowed-variable
+    this.servicios.forEach(element => {
+      cont++;
+      if ( posicion !== cont ) {
+        this.serviciosAuxiliar.push(element);
+      }
+    });
+    this.servicios = this.serviciosAuxiliar;
+    this.dataSource = new MatTableDataSource(this.serviciosAuxiliar);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
     this.detalleOrden.nombreServicio = row.nombre_s;
     this.detalleOrden.id_servicio = row.id_servicio;
     this.metodosPorServicio = new Array();
@@ -125,6 +136,35 @@ export class AgregarDetalleOrdenEComponent implements OnInit {
 
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
+    }
+  }
+
+  asignarPersonal() {
+    this.asignadoBool = true;
+  }
+
+  agregarDetalleOrdenOK() {
+    if (this.asignarPersonalBool === true) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  asignarPersonalOK() {
+    if (this.asignarPersonalBool === true && this.asignadoBool === false && !(!this.detalleOrden.nombrePersonal)) {
+      console.log(this.detalleOrden.nombrePersonal);
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  asignadoOK() {
+    if (this.asignadoBool === true) {
+      return false;
+    } else {
+      return true;
     }
   }
 }
