@@ -145,7 +145,7 @@ export class OrdenTrabajoEEdicionComponent implements OnInit {
       console.log(result);
       // this.dataDetalleOrden.push(result);
       this.dataDetalleOrden = result;
-
+      // probar
       this.dataDetalleOrden.forEach(element => {
         element.fecha_fin_analisis = new Date(element.fecha_fin_analisis);
       });
