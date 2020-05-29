@@ -79,6 +79,9 @@ export class OrdenTrabajoEComponent implements OnInit {
           element.nombreCliente = cliente.nombre_cl;
         });
       });
+      data.forEach(element => {
+        element.fechaorden_ot = new Date(element.fechaorden_ot).toISOString().slice(0, 10);
+      });
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;

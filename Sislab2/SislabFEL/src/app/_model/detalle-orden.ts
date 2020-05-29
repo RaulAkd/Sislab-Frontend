@@ -18,7 +18,7 @@ export class DetalleOrden {
     // tslint:disable-next-line:variable-name
     fecha_inicio_analisis: Date;
     // tslint:disable-next-line:variable-name
-    fecha_fin_analisis: number;
+    fecha_fin_analisis: Date;
     // tslint:disable-next-line:variable-name
     id_servicio: string;
     // tslint:disable-next-line:variable-name

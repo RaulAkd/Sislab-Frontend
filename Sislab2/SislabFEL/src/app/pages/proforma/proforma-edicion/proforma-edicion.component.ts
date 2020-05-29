@@ -53,6 +53,7 @@ export class ProformaEdicionComponent implements OnInit {
     this.cliente.tipoCliente = new TipoCliente();
     this.proforma = new Proforma();
     this.proforma.cliente = new Cliente();
+    // this.proforma.fecha = new Date().toISOString().slice(0, 10);
 //    this.dataSource = new MatTableDataSource(this.dataDetalleProforma);
 //    this.dataSource = new MatTableDataSource(this.dataDetalleProforma);
 //    this.dataSource.paginator = this.paginator;

@@ -143,7 +143,12 @@ export class OrdenTrabajoEEdicionComponent implements OnInit {
       }
       console.log('EL detealle proforma');
       console.log(result);
-      this.dataDetalleOrden.push(result);
+      // this.dataDetalleOrden.push(result);
+      this.dataDetalleOrden = result;
+
+      this.dataDetalleOrden.forEach(element => {
+        element.fecha_fin_analisis = new Date(element.fecha_fin_analisis);
+      });
       this.dataSource = new MatTableDataSource(this.dataDetalleOrden);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
@@ -175,13 +180,6 @@ export class OrdenTrabajoEEdicionComponent implements OnInit {
       }
   }
 
-  /* editarDetalleProforma(row: any) {
-    const dialogRef = this.dialog.open(DetalleEdicionComponent, { data: row});
-    dialogRef.afterClosed().subscribe(result => {
-
-    });
-  } */
-
   guardarOrden() {
     this.orden.id_cliente = this.cliente.id_cliente;
     // this.proforma.total_po = this.detalleProforma.totalservicio_po;
@@ -195,9 +193,9 @@ export class OrdenTrabajoEEdicionComponent implements OnInit {
       let token = JSON.parse(sessionStorage.getItem(TOKEN_NAME));
       const decodedToken = helper.decodeToken(token.access_token);
       this.orden.id_ti = decodedToken.user_name;
-      this.orden.tipo_ot = 'Interna';
+      this.orden.tipo_ot = 'Externa';
       console.log('Guardar nueva proforma');
-      this.orden.fechaorden_ot = new Date().toISOString().slice(0, 10);
+      // this.orden.fechaorden_ot = new Date().toISOString().slice(0, 10);
       this.orden.detalleOrden = this.dataDetalleOrden;
       console.log('Proforma a guardar');
       console.log(this.orden);

@@ -27,6 +27,7 @@ import { ListaPersonalComponent } from '../../../personal/lista-personal/lista-p
 })
 export class AgregarDetalleOrdenEComponent implements OnInit {
 
+  detalleOrdenArray: Array<DetalleOrden>;
   asignadoBool = true;
   asignarPersonalBool = false;
   agregarDetalleOrdenBool = false;
@@ -57,6 +58,7 @@ export class AgregarDetalleOrdenEComponent implements OnInit {
   ngOnInit() {
     this.detalleOrden = new DetalleOrden();
     this.servicios = new Array<Servicio>();
+    this.detalleOrdenArray = new Array<DetalleOrden>();
     this.serviciosAuxiliar = new Array<Servicio>();
     this.proforma = Object.assign({} , this.data);
 
@@ -73,6 +75,8 @@ export class AgregarDetalleOrdenEComponent implements OnInit {
   }
 
   seleccionar(row: any) {
+    this.detalleOrden = new DetalleOrden();
+    this.detalleOrden.personal = new Personal();
     this.asignadoBool = false;
     this.asignarPersonalBool = true;
     let cont = -1;
@@ -141,6 +145,14 @@ export class AgregarDetalleOrdenEComponent implements OnInit {
 
   asignarPersonal() {
     this.asignadoBool = true;
+    console.log('detalle orden');
+    console.log(this.detalleOrden);
+    console.log('array det orden');
+    console.log(this.detalleOrdenArray);
+    this.detalleOrdenArray.push(this.detalleOrden);
+    console.log('despues del push');
+    console.log(this.detalleOrdenArray);
+    // this.detalleOrden.personal.id_personal
   }
 
   agregarDetalleOrdenOK() {

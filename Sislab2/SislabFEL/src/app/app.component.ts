@@ -1,3 +1,4 @@
+import { DatosUsuarioService } from './_service/datos-usuario.service';
 import { MenuTitulo } from './_model/menuTitulo';
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from './_service/login.service';
@@ -25,7 +26,7 @@ export class AppComponent implements OnInit {
   accesos2 = true;
   accesos3 = true;
   // tslint:disable-next-line:max-line-length
-  constructor(private router: Router,  public loginService: LoginService, private menuService: MenuService) {
+  constructor(public datosUsuario: DatosUsuarioService,  private router: Router,  public loginService: LoginService, private menuService: MenuService) {
   }
 
   ngOnInit() {
@@ -62,5 +63,8 @@ export class AppComponent implements OnInit {
     } else {
       return false;
     }
+  }
+  recibirUsuario(event: any) {
+    console.log(event);
   }
 }
